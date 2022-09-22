@@ -2,9 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Flights</title>
+    <title>Find Flights</title>
 </head>
 <body>
-<h2>Found Flights</h2>
+<h2>Find Flights</h2>
+<form th:action="@{/findFlights}" method="post">
+    <label>From: <input type="text" name="from"></label>
+    <label>To: <input type="text" name="to"></label>
+    <label>Departure Date: <input type="text" name="departureDate"></label>
+    <input type="submit" value="search">
+</form>
 </body>
 </html>

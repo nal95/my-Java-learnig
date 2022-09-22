@@ -1,6 +1,10 @@
 package com.nal95.flightreservation.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -11,6 +15,8 @@ public class Flight extends AbstractEntity {
     private String operatingAirlines;
     private String departureCity;
     private String arrivalCity;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @Temporal(TemporalType.DATE)
     private Date dateOfDeparture;
     private Timestamp estimatedDepartureTime;
 

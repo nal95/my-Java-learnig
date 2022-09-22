@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flights</title>
+</head>
+<body>
+<h3>Flights:</h3>
+<table>
+  <thead>
+  <tr>
+    <th> Airlines</th>
+    <th> Departure City</th>
+    <th> Departure Time</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each = "flight:${flights}">
+    <td  th:text ="${flight.operatingAirlines}"></td>
+    <td  th:text ="${flight.departureCity}"></td>
+    <td  th:text ="${flight.arrivalCity}"></td>
+    <td  th:text ="${flight.estimatedDepartureTime}"></td>
+    <td> <a th:href="@{'showComplateReservation?flightId='+${flight.id}}">Select</a></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
