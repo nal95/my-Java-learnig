@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Complete Reservation</title>
+</head>
+<body>
+<h3> Complete Reservation</h3>
+Airline: <span th:text="${flight.operatingAirlines}"/> <br/>
+Departure City:  <span th:text="${flight.departureCity}"/><br/>
+Arrival City:<span th:text="${flight.departureCity}"/><br/>
+
+<form th:action="@{completeReservation}" method="post">
+    <pre>
+        <h2> Passenger Details:</h2>
+        <label>First Name: <input type="text" name="passengerFirstName"/>
+        </label>
+        <label>Last Name: <input type="text" name="passengerLastName"/>
+        </label>
+        <label>Email: <input type="text" name="passengerEmail"/>
+        </label>
+        <label>Phone: <input type="text" name="passengerPhone"/>
+        </label>
+        <h2> Cart Details:</h2>
+        <label>Name on the Card: <input type="text" name="nameOnTheCard"/>
+        </label>
+        <label>Cart N°: <input type="text" name="cardNumber"/>
+        </label>
+        <label>Expiry Date: <input type="text" name="expirationDate"/>
+        </label>
+        <label>Three Digit Sec Code: <input type="text" name="securityCode"/>
+        </label>
+        <input type="hidden" name="flightId" th:value="${flight.id}" readonly/>
+        <input type="submit" value="confirm"/>
+    </pre>
+</form>
+</body>
+</html>
