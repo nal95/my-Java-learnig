@@ -5,19 +5,19 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Reservation extends AbstractEntity{
-    private boolean checkIn;
+    private boolean checkedIn;
     private int numberOfBags;
     @OneToOne
     private Passenger passenger;
     @OneToOne
     private Flight flight;
 
-    public boolean isCheckIn() {
-        return checkIn;
+    public boolean isCheckedIn() {
+        return checkedIn;
     }
 
-    public void setCheckIn(boolean checkIn) {
-        this.checkIn = checkIn;
+    public void setCheckedIn(boolean checkedIn) {
+        this.checkedIn = checkedIn;
     }
 
     public int getNumberOfBags() {
