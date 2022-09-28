@@ -13,7 +13,7 @@ public class ReservationRESTController {
     @Autowired
     ReservationRepository reservationRepository;
 
-    @RequestMapping("/reservation/{id}")
+    @RequestMapping("/reservations/{id}")
     public Reservation findReservation(@PathVariable("id") Long id){
         return reservationRepository.findById(id).orElseThrow();
 
