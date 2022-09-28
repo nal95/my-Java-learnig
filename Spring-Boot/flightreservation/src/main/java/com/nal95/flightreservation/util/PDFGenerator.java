@@ -7,11 +7,12 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.nal95.flightreservation.entities.Reservation;
+import org.springframework.stereotype.Component;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
-
+@Component
 public class PDFGenerator {
     public void generateItinerary(Reservation reservation, String filePath){
         Document document = new Document();
