@@ -1,4 +1,4 @@
-package com.nal95.flightcheckin.util;
+package com.nal95.flightreservation.util;
 
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
