@@ -48,7 +48,7 @@ public class PDFGenerator {
         table.addCell(reservation.getFlight().getFlightNumber());
 
         table.addCell("Departure Date ");
-        table.addCell(reservation.getFlight().getEstimatedDepartureTime().toString());
+        table.addCell(reservation.getFlight().getDateOfDeparture().toString());
 
         table.addCell("Departure Time ");
         table.addCell(reservation.getFlight().getEstimatedDepartureTime().toString());
