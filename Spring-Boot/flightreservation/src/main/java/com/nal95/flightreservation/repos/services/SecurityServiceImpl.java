@@ -1,6 +1,5 @@
 package com.nal95.flightreservation.repos.services;
 
-import com.nal95.flightreservation.controllers.UserController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
