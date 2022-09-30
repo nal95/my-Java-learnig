@@ -34,3 +34,6 @@ build/
 
 ### JAR ###
 out/
+
+### MATA-INF ###
+src/main/resources/META-INF/
