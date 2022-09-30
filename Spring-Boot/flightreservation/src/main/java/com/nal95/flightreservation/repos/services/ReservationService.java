@@ -1,4 +1,4 @@
-package com.nal95.flightreservation.services;
+package com.nal95.flightreservation.repos.services;
 
 import com.nal95.flightreservation.dto.ReservationRequest;
 import com.nal95.flightreservation.entities.Reservation;

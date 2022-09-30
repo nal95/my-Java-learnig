@@ -4,7 +4,7 @@ import com.nal95.flightreservation.dto.ReservationRequest;
 import com.nal95.flightreservation.entities.Flight;
 import com.nal95.flightreservation.entities.Reservation;
 import com.nal95.flightreservation.repos.FlightRepository;
-import com.nal95.flightreservation.services.ReservationService;
+import com.nal95.flightreservation.repos.services.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
