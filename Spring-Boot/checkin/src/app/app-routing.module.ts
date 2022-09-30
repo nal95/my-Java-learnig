@@ -5,7 +5,10 @@ import {ReservationComponent} from "./components/reservation/reservation.compone
 import {ReservationInfosComponent} from "./components/reservation-infos/reservation-infos.component";
 
 const routes: Routes = [
-  {path: '',redirectTo:'',pathMatch:'full'},
+  {
+    path:'',
+    component: HomeComponent
+  },
   {
     path:'startCheckIn',
     component: HomeComponent
