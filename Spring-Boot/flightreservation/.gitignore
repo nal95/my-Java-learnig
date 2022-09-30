@@ -33,7 +33,7 @@ build/
 .vscode/
 
 ### JAR ###
-out/
+/out
 
 ### MATA-INF ###
 src/main/resources/META-INF/
