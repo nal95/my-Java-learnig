@@ -30,4 +30,8 @@ public class FlightsController {
         LOGGER.info("Fund Flight are: "+ flights);
         return "displayFlights";
     }
+    @RequestMapping("/admin/showAddFlight")
+    public String showAddFlight(){
+        return "addFlight";
+    }
 }
