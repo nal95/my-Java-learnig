@@ -9,10 +9,11 @@ import { Checkin } from "../models/checkin"
 })
 export class CheckinService {
 
-  reservationUrl = "http://localhost:8080/flightreservation/reservations"
+  reservationUrl = "http://localhost:8080/flightreservation/reservations/";
+
   constructor( private httpClient:HttpClient) { }
 
-  public getReservation(id:number): Observable<Reservation>{
+  public getReservation(id:Number): Observable<Reservation>{
     return this.httpClient.get<Reservation>(this.reservationUrl+id);
   }
 
