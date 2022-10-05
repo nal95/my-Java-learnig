@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+import {CheckinService} from "../../services/checkin.service";
+import {of} from "rxjs";
+import {Reservation} from "../../models/reservation";
 
 @Component({
   selector: 'app-home',
@@ -6,10 +10,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  reservationId:Number|undefined;
+  reservation = {} as Reservation;
 
-  constructor() { }
+  constructor(
+    private  router:Router,
+    private checkinService:CheckinService,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  public onClick(){
+    this.checkinService.getReservation(this.reservationId!).subscribe(
+      res=> {
+        this.reservation = res ;
+        localStorage.setItem("reservation",JSON.stringify(res));
+        this.router.navigate(['checkIn']);
+      }
+    )
   }
 
 }

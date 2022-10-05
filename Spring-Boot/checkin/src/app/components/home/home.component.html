@@ -1,1 +1,11 @@
-<p>home works!</p>
+<mat-card >
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput placeholder="Enter the reservation id:" [(ngModel)]="reservationId">
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary"  (click)="onClick()">Next</button>
+    </mat-card-actions>
+</mat-card>
+
