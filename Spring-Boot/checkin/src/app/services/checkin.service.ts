@@ -9,7 +9,8 @@ import { Checkin } from "../models/checkin"
 })
 export class CheckinService {
 
-  reservationUrl = "http://localhost:8080/flightreservation/reservations/";
+  private reservationUrl:string = "http://localhost:8080/flightreservation/reservations/";
+  public reservation!:Reservation;
 
   constructor( private httpClient:HttpClient) { }
 

@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import {Router} from "@angular/router";
+import {CheckinService} from "../../services/checkin.service";
+import {Reservation} from "../../models/reservation";
+
 
 @Component({
   selector: 'app-reservation',
@@ -6,10 +10,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reservation.component.css']
 })
 export class ReservationComponent implements OnInit {
-
-  constructor() { }
+  public reservation!:Reservation;
+  constructor(
+    private  router:Router,
+    private checkinService:CheckinService,
+  ) { }
 
   ngOnInit(): void {
+    this.reservation = this.checkinService.reservation;
   }
+
 
 }

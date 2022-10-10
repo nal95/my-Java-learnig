@@ -11,7 +11,6 @@ import {Reservation} from "../../models/reservation";
 })
 export class HomeComponent implements OnInit {
   reservationId:Number|undefined;
-  reservation = {} as Reservation;
 
   constructor(
     private  router:Router,
@@ -24,8 +23,7 @@ export class HomeComponent implements OnInit {
   public onClick(){
     this.checkinService.getReservation(this.reservationId!).subscribe(
       res=> {
-        this.reservation = res ;
-        localStorage.setItem("reservation",JSON.stringify(res));
+        this.checkinService.reservation = res;
         this.router.navigate(['checkIn']);
       }
     )

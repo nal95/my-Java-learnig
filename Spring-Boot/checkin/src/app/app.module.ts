@@ -14,6 +14,7 @@ import { ReservationInfosComponent } from './components/reservation-infos/reserv
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
+import {CheckinService} from "./services/checkin.service";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import {FormsModule} from "@angular/forms";
     MatInputModule,
     FormsModule
   ],
-  providers: [],
+  providers: [CheckinService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
