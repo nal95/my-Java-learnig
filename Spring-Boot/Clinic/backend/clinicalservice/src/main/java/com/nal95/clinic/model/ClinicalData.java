@@ -1,7 +1,11 @@
 package com.nal95.clinic.model;
 
+
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
+
 
 @Entity
 @Table(name = "clinicaldata")
@@ -12,6 +16,7 @@ public class ClinicalData {
     private int id;
     private String componentName;
     private String componentValue;
+    @CreationTimestamp
     private Timestamp measuredDateTime;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_id",nullable = false)
