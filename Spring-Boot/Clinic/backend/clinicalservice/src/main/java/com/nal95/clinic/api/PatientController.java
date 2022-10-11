@@ -29,7 +29,7 @@ public class PatientController {
     }
 
     @PostMapping(value = "/patients")
-    public Patient savePatients(Patient patient){
+    public Patient savePatients(@RequestBody Patient patient){
         return repository.save(patient);
     }
 }
