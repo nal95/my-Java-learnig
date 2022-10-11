@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 public class ClinicalData {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String componentName;
     private String componentValue;
