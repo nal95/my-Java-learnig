@@ -10,7 +10,15 @@ public class Patient {
     private int id;
     private String lastName;
     private String firstName;
-    private String age;
+    private int age;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "patient")
     private List<ClinicalData> clinicalData;
@@ -39,11 +47,5 @@ public class Patient {
         this.firstName = firstName;
     }
 
-    public String getAge() {
-        return age;
-    }
 
-    public void setAge(String age) {
-        this.age = age;
-    }
 }
