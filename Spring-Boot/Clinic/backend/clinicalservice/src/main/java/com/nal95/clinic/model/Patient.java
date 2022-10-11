@@ -1,7 +1,7 @@
 package com.nal95.clinic.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Patient {
@@ -10,6 +10,9 @@ public class Patient {
     private String lastName;
     private String firstName;
     private String age;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "patient")
+    private List<ClinicalData> clinicalData;
 
     public int getId() {
         return id;
