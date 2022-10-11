@@ -1,6 +1,7 @@
 package com.nal95.clinic.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -20,6 +21,7 @@ public class ClinicalData {
     private Timestamp measuredDateTime;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_id",nullable = false)
+    @JsonIgnore
     private Patient patient;
 
     public Patient getPatient() {
