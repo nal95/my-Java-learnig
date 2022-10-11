@@ -47,5 +47,11 @@ public class Patient {
         this.firstName = firstName;
     }
 
+    public List<ClinicalData> getClinicalData() {
+        return clinicalData;
+    }
 
+    public void setClinicalData(List<ClinicalData> clinicalData) {
+        this.clinicalData = clinicalData;
+    }
 }
