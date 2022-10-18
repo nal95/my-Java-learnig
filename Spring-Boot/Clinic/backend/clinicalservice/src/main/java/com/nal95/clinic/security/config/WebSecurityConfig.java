@@ -31,6 +31,8 @@ public class WebSecurityConfig {
 
         authenticationManagerBuilder
                 .userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
+        AuthenticationManager authenticationManager = authenticationManagerBuilder.build();
+        http.authenticationManager(authenticationManager);
 
         http.csrf().disable().authorizeRequests()
                 .antMatchers(HttpMethod.POST,"/api/users").permitAll()
