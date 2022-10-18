@@ -27,7 +27,7 @@ public class UserController {
         return "User Registration";
     }
 
-    @PostMapping(value = "/login")
+    @PostMapping(value = "/users")
     public UserRest login(@RequestBody User user){
         UserRest returnValue = new UserRest();
 
