@@ -2,7 +2,7 @@ package com.nal95.clinic.api;
 
 import com.nal95.clinic.dto.UserDto;
 import com.nal95.clinic.model.User;
-import com.nal95.clinic.dto.responses.UserRest;
+import com.nal95.clinic.model.responses.UserRest;
 import com.nal95.clinic.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +22,7 @@ public class UserController {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
 
-    @GetMapping(value = "/registration")
+    @GetMapping(value = "/users")
     public String register(){
         return "User Registration";
     }

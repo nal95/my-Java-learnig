@@ -1,4 +1,4 @@
-package com.nal95.clinic.dto.responses;
+package com.nal95.clinic.model.responses;
 
 import com.nal95.clinic.Title;
 
@@ -6,7 +6,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
 public class UserRest {
-        private String firstName;
+    private String firstName;
     private String lastName;
     private String email;
 
