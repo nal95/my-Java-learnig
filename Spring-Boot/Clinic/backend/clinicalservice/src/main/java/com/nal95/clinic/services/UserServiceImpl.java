@@ -3,8 +3,8 @@ package com.nal95.clinic.services;
 import com.nal95.clinic.dto.UserDto;
 import com.nal95.clinic.model.User;
 import com.nal95.clinic.repos.UserRepository;
+import com.nal95.clinic.util.UuidUtils;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -46,8 +46,16 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    public UserDto getUser(String email){
+        User user = userRepository.findUserByEmail(email);
+        if (user ==null) throw new UsernameNotFoundException(email);
 
+        UserDto  returnValue = new UserDto();
+        BeanUtils.copyProperties(user,returnValue);
+        return returnValue;
+    }
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findUserByEmail(email);
         if (user == null) throw new UsernameNotFoundException(email);
 
