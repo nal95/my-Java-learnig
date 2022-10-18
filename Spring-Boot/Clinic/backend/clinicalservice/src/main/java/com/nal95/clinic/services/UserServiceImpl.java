@@ -15,17 +15,28 @@ import java.util.ArrayList;
 @Service
 public class UserServiceImpl implements UserService{
 
-    @Autowired
+    final
     UserRepository userRepository;
 
-    @Autowired
+    final
     BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    final
+    UuidUtils uuidUtils;
+
+    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder, UuidUtils uuidUtils) {
+        this.userRepository = userRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.uuidUtils = uuidUtils;
+    }
 
     @Override
     public UserDto createUser(User user){
         if (userRepository.findUserByEmail(user.getEmail()) != null)
             throw new RuntimeException("DB already have this Email");
 
+        String publicUserId = uuidUtils.generateUserId(30);
+        user.setUserId(publicUserId);
         user.setEncryptedPassword(bCryptPasswordEncoder.encode(user.getEncryptedPassword()));
         User savedUser = userRepository.save(user);
         UserDto returnValue = new UserDto();

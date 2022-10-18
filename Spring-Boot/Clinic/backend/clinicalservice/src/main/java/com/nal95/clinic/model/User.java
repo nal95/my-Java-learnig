@@ -10,6 +10,9 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(nullable=false)
+    private String userId;
     private String firstName;
     private String lastName;
     @Column(nullable = false, unique = true)
@@ -31,6 +34,14 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getEmail() {

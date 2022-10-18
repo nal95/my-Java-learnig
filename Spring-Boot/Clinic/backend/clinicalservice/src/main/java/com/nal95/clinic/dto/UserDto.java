@@ -4,10 +4,16 @@ import com.nal95.clinic.Title;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import java.io.Serial;
+import java.io.Serializable;
 
-public class UserDto {
+public class UserDto implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = 6835192601898364280L;
     private int id;
+
+    private String userId;
     private String firstName;
     private String lastName;
     private String email;
@@ -23,6 +29,14 @@ public class UserDto {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getFirstName() {
