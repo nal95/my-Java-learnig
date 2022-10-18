@@ -35,9 +35,12 @@ public class WebSecurityConfig {
         AuthenticationManager authenticationManager = authenticationManagerBuilder.build();
         http.authenticationManager(authenticationManager);
 
+        final AuthenticationFilter filter = new AuthenticationFilter(authenticationManager);
+        filter.setFilterProcessesUrl("/api/users/login");
+
         http.csrf().disable().authorizeRequests()
                 .antMatchers(HttpMethod.POST,SecurityConstants.SIGN_UP_URL).permitAll()
-                .anyRequest().authenticated().and().addFilter(new AuthenticationFilter(authenticationManager));
+                .anyRequest().authenticated().and().addFilter(filter);
 
         return http.build();
     }
