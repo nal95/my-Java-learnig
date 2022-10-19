@@ -1,1 +1,22 @@
-<h1> Welcome to {{title}}</h1>
+<mat-toolbar color="primary">
+  <button class="menu-title" mat-icon-button routerLink="/">
+    <mat-icon>table_view</mat-icon>
+    {{title}}
+  </button>
+  <span class="menu-spacer"></span>
+  <a mat-button routerLink="/registration">
+    <mat-icon>how_to_reg</mat-icon>
+    Register
+  </a>
+  <a mat-button routerLink="/login">
+    <mat-icon>account_circle</mat-icon>
+    Login
+  </a>
+  <a mat-button (click)="logout()">
+    <mat-icon>exit_to_app</mat-icon>
+    Logout
+  </a>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
+
