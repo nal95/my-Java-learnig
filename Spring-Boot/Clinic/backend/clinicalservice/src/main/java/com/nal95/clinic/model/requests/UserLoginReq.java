@@ -1,6 +1,6 @@
 package com.nal95.clinic.model.requests;
 
-public class UserLoginRequest {
+public class UserLoginReq {
     private String email;
     private String password;
 

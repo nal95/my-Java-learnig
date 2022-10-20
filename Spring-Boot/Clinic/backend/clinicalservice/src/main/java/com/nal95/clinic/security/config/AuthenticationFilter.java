@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nal95.clinic.SpringApplicationContext;
 import com.nal95.clinic.dto.UserDto;
-import com.nal95.clinic.model.requests.UserLoginRequest;
+import com.nal95.clinic.model.requests.UserLoginReq;
 import com.nal95.clinic.services.UserService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -35,8 +35,8 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         try {
 
 
-             UserLoginRequest credentials = new ObjectMapper()
-                    .readValue( req.getInputStream(),UserLoginRequest.class);
+             UserLoginReq credentials = new ObjectMapper()
+                    .readValue( req.getInputStream(), UserLoginReq.class);
 
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(

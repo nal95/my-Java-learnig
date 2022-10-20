@@ -39,7 +39,8 @@ public class WebSecurityConfig {
         filter.setFilterProcessesUrl("/api/users/login");
 
         http.csrf().disable().authorizeRequests()
-                .antMatchers(HttpMethod.POST,SecurityConstants.SIGN_UP_URL).permitAll()
+                .antMatchers(HttpMethod.POST, SecurityConstants.SIGN_UP_URL, SecurityConstants.PATIENT_URL, SecurityConstants.CLINICAL_URL).permitAll()
+                .antMatchers(HttpMethod.GET,SecurityConstants.PATIENT_URL, SecurityConstants.PATIENT_ANALYZE_URL, SecurityConstants.PATIENTS_URL, SecurityConstants.CLINICALS_URL).permitAll()
                 .anyRequest().authenticated().and().addFilter(filter);
 
         return http.build();
