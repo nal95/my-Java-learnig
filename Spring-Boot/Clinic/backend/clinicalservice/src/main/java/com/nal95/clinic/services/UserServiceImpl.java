@@ -9,22 +9,29 @@ import com.nal95.clinic.utils.UuidUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
 @Slf4j
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
 
     private final UserRepository userRepository;
 
     private final RoleRepository roleRepository;
 
-//    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
     private final UuidUtil uuidUtil;
@@ -41,6 +48,7 @@ public class UserServiceImpl implements UserService {
 
         String publicUserId = uuidUtil.generateUserId(30);
         userToSave.setUserId(publicUserId);
+        userToSave.setEncryptedPassword(bCryptPasswordEncoder.encode(userToSave.getEncryptedPassword()));
 
         log.info("Saving a new user {}", userToSave);
 
@@ -72,6 +80,23 @@ public class UserServiceImpl implements UserService {
     public List<User> getUsers() {
         log.info("Fetching all users");
         return userRepository.findAll();
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = userRepository.findUserByEmail(email);
+        if (user == null){
+            log.error("User not found in the DB");
+            throw new UsernameNotFoundException("User not found in the DB");
+        }else {
+            log.error("User found in the DB", user.getFirstName());
+
+        }
+        Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        user.getRoles().forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getName())));
+
+        return new org.springframework.security.core
+                .userdetails.User(user.getEmail(),user.getEncryptedPassword(),authorities);
     }
 
 /*    @Autowired
