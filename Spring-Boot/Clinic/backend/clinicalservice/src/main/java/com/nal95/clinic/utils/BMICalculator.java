@@ -1,4 +1,4 @@
-package com.nal95.clinic.util;
+package com.nal95.clinic.utils;
 
 import com.nal95.clinic.model.ClinicalData;
 

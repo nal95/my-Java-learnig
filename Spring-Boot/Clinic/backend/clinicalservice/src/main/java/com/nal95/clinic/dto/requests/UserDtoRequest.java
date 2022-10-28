@@ -1,45 +1,27 @@
-package com.nal95.clinic.model;
+package com.nal95.clinic.dto.requests;
 
+import com.nal95.clinic.model.Role;
 import com.nal95.clinic.utils.Title;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.util.ArrayList;
 import java.util.Collection;
 
-@Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    @Column(nullable=false)
-    private String userId;
-
+public class UserDtoRequest {
     private String firstName;
-
     private String lastName;
-
-    @Column(nullable = false, unique = true)
     private String email;
-
     private String encryptedPassword;
-
-    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Title title;
-
     private String emailVerificationToken;
-
-    @Column(nullable = false,columnDefinition = "boolean default false")
     private boolean emailVerificationStatus;
-
-    @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles = new ArrayList<>();
-
 }

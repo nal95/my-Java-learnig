@@ -1,6 +1,4 @@
 
-†
-Vbackend/clinicalservice/src/main/java/com/nal95/clinic/ClinicalserviceApplication.java,2\c\2c9f55326a16711417da6c04deadfe277515c521
 x
 Hbackend/.idea/libraries/Maven__org_springframework_spring_orm_5_3_23.xml,0\e\0e6e32bb85cb7dda87a8a446caedadceb70376ac
 y

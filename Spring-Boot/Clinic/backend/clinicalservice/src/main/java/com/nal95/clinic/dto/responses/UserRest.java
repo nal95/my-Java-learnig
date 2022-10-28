@@ -1,6 +1,6 @@
 package com.nal95.clinic.dto.responses;
 
-import com.nal95.clinic.Title;
+import com.nal95.clinic.utils.Title;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;

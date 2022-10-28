@@ -44,12 +44,12 @@ CREATE TABLE ROLE
     PRIMARY KEY (ID)
 );
 
-create table user_role(
+create table user_roles(
                           user_id int,
-                          role_id int,
+                          roles_id int,
                           FOREIGN KEY (user_id)
                               REFERENCES user(id),
-                          FOREIGN KEY (role_id)
+                          FOREIGN KEY (roles_id)
                               REFERENCES role(id)
 );
 
@@ -172,5 +172,7 @@ drop table clinicaldata;
 drop table patient;
 
 drop table user;
+
+drop table user_roles;
 
 

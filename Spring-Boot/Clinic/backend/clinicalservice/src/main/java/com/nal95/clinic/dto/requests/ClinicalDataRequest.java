@@ -1,4 +1,4 @@
-package com.nal95.clinic.dto;
+package com.nal95.clinic.dto.requests;
 
 public class ClinicalDataRequest {
     private String componentName;

@@ -3,7 +3,7 @@ package com.nal95.clinic.api;
 import com.nal95.clinic.model.ClinicalData;
 import com.nal95.clinic.model.Patient;
 import com.nal95.clinic.repos.PatientRepository;
-import com.nal95.clinic.util.BMICalculator;
+import com.nal95.clinic.utils.BMICalculator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
