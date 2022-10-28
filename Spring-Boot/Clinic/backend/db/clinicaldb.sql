@@ -173,6 +173,9 @@ drop table patient;
 
 drop table user;
 
+drop table role;
+
+
 drop table user_roles;
 
 
