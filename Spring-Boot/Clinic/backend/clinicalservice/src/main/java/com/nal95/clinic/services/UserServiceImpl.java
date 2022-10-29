@@ -11,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -25,7 +24,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Transactional
 @Slf4j
-public class UserServiceImpl implements UserService, UserDetailsService {
+public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
@@ -73,7 +72,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public User getUser(String email) {
         log.info("Fetching user by email {}", email);
-        return userRepository.findUserByEmail(email);
+        User user = userRepository.findUserByEmail(email);
+        if (user == null) throw new UsernameNotFoundException(email);
+        return user;
     }
 
     @Override
@@ -98,19 +99,4 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return new org.springframework.security.core
                 .userdetails.User(user.getEmail(),user.getEncryptedPassword(),authorities);
     }
-
-/*    @Autowired
-    UserRepository userRepository;
-
-    @Override
-    public UserDto createUser(User user){
-        if (userRepository.findUserByEmail(user.getEmail()) != null)
-            throw new RuntimeException("DB already have this Email");
-
-        User savedUser = userRepository.save(user);
-        UserDto returnValue = new UserDto();
-        BeanUtils.copyProperties(savedUser,returnValue);
-
-        return returnValue;
-    }*/
 }
