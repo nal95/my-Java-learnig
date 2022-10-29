@@ -237,5 +237,7 @@ Z
 *frontend/clinicalapp/src/app/app.module.ts,1\d\1d365cd1ce7a74a64038f7d13ab7f27b46176953
 _
 /frontend/clinicalapp/src/app/app.component.html,8\b\8b9f46214bd1b493948b4dd6ae56f9217e0a684b
-~
-Nbackend/clinicalservice/src/main/java/com/nal95/clinic/util/BMICalculator.java,3\9\39d74ffbaef99d2753ec24ad75e22950514ef717
+€
+Pbackend/clinicalservice/src/main/java/com/nal95/clinic/repos/UserRepository.java,6\f\6f57429a286371bd413c1c503fa9cc8507303e19
+v
+Fbackend/clinicalservice/src/main/java/com/nal95/clinic/model/User.java,d\7\d74298deedf913f96b568c5835874f2c852ba87e
