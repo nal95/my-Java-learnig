@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import {HomeModule} from "./home/home.module";
 import {LoginModule} from "./login/login.module";
 import { MaterialModule } from './material.module';
+import {HttpClientModule} from "@angular/common/http";
+import {httpInterceptorProviders} from "./helpers/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -22,8 +24,10 @@ import { MaterialModule } from './material.module';
     BrowserAnimationsModule,
     FormsModule,
     MaterialModule,
+    HttpClientModule,
   ],
-  providers: [],
+
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

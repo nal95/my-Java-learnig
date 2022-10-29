@@ -3,9 +3,11 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$/clinicalapp">
+      <sourceFolder url="file://$MODULE_DIR$/clinicalapp" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/clinicalapp/dist" />
       <excludeFolder url="file://$MODULE_DIR$/clinicalapp/tmp" />
     </content>
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

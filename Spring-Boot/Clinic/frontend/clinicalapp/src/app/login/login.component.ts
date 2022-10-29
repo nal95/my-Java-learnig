@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {ClincalHttpService} from "../services/clincal-http.service";
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -7,12 +7,15 @@ import {ClincalHttpService} from "../services/clincal-http.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor( private readonly clincalHttpService:ClincalHttpService) {
+
+  constructor(private readonly httpService:AuthService) {
   }
 
   login(email: string, pwd: string) {
-    this.clincalHttpService.login(email,pwd).subscribe(
-      (res)=>console.log(res)
+    this.httpService.login(email,pwd).subscribe({
+      error:()=>alert("error by login"),
+      next: (res)=>console.log(res)
+      }
     )
   }
 }
