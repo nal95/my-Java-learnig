@@ -229,3 +229,9 @@ P
 Pbackend/clinicalservice/src/main/java/com/nal95/clinic/repos/UserRepository.java,6\f\6f57429a286371bd413c1c503fa9cc8507303e19
 v
 Fbackend/clinicalservice/src/main/java/com/nal95/clinic/model/User.java,d\7\d74298deedf913f96b568c5835874f2c852ba87e
+]
+-frontend/clinicalapp/src/app/app.component.ts,6\b\6b4dddcad308be7db82e6c3c88dfa27307a45e77
+_
+/frontend/clinicalapp/src/app/util/api-routes.ts,7\4\74ef7aa86914542451c38ecf4f4ec903d79872f1
+Q
+!frontend/clinicalapp/package.json,d\2\d2d69da8b769eaa27ac3e285ee13f8158b6d7507
