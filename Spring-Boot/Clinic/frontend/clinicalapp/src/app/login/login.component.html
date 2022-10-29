@@ -4,18 +4,18 @@
     <form class="my-form" >
       <p>
         <mat-form-field>
-          <input type="text" matInput placeholder="Username" >
+          <input type="text" matInput placeholder="Username" #email>
         </mat-form-field>
       </p>
 
       <p>
         <mat-form-field>
-          <input type="password" matInput placeholder="Password" >
+          <input type="password" matInput placeholder="Password" #pwd >
         </mat-form-field>
       </p>
 
       <div class="button">
-        <button type="submit" mat-button>Login</button>
+        <button type="submit" mat-button (click)="login(email.value,pwd.value)" )>Login</button>
       </div>
 
     </form>

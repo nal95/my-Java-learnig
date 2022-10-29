@@ -181,14 +181,10 @@ Qbackend/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_13_4.x
 Ubackend/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_13_4.xml,1\1\1126d00d06d9b33757a6ce3f8953ef1a80c98bdf
 S
 #frontend/clinicalapp/src/styles.css,a\0\a0f0458e62f32f06f665ed9f23c5957777e3587e
-^
-.frontend/clinicalapp/src/app/app.component.css,7\e\7e66e9c2431c2bcbf084b2a9bc2c222efacc890f
 X
 (frontend/clinicalapp/src/assets/.gitkeep,1\5\152cf394fd79601fb33f02c8e265a43414c4ea8d
 V
 &frontend/clinicalapp/tsconfig.app.json,6\0\601b9bb7a0812ea74d65dfe8ee7961747210988c
-Q
-!frontend/clinicalapp/angular.json,2\3\233ff38ab68086a31ea3da332940c9c27239adb2
 W
 'frontend/clinicalapp/tsconfig.spec.json,5\5\5523af2f4dc978c88d9fe47538a28fe147ce052a
 T
@@ -197,8 +193,6 @@ O
 frontend/clinicalapp/.gitignore,0\d\0d528755a749cba47ce14edea4a49c0d0e1f9428
 R
 "frontend/clinicalapp/.editorconfig,0\9\091c951e40af6ed2ed7cacececd70a56682ed8a7
-Q
-!frontend/clinicalapp/package.json,d\2\d2d69da8b769eaa27ac3e285ee13f8158b6d7507
 R
 "frontend/clinicalapp/tsconfig.json,6\9\69244c9a255768055255fb391f43071cf6129da2
 W
@@ -215,8 +209,6 @@ H
 frontend/clinicalapp.iml,7\d\7dce56f24b0a51c74fc626f6fdffec3434d38437
 b
 2frontend/clinicalapp/src/app/app.component.spec.ts,1\7\17a7f0849eff70a922f25f6b085fbab16d6ecc06
-]
--frontend/clinicalapp/src/app/app.component.ts,6\b\6b4dddcad308be7db82e6c3c88dfa27307a45e77
 i
 9frontend/clinicalapp/src/environments/environment.prod.ts,b\0\b003f7dd0d75e4428af30056bb2ea2aa2c2d8697
 d
@@ -233,10 +225,6 @@ N
 frontend/clinicalapp/README.md,f\8\f86a0f7ad13442ebfe2b77e931dd981731fb5cd1
 P
  frontend/clinicalapp/src/test.ts,2\0\20bb5d4c73785cf55204099ef6166a61e63d4c6a
-Z
-*frontend/clinicalapp/src/app/app.module.ts,1\d\1d365cd1ce7a74a64038f7d13ab7f27b46176953
-_
-/frontend/clinicalapp/src/app/app.component.html,8\b\8b9f46214bd1b493948b4dd6ae56f9217e0a684b
 €
 Pbackend/clinicalservice/src/main/java/com/nal95/clinic/repos/UserRepository.java,6\f\6f57429a286371bd413c1c503fa9cc8507303e19
 v
