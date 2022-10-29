@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { MatToolbarModule } from '@angular/';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
