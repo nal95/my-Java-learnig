@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'clinicalapp';
+  title = 'Clinical Service';
+  public isAuthenticated = false;
+
+  constructor(private  route:Router) {
+  }
+
+  public logout(): void {
+    this.route.navigateByUrl('');
+  }
 }
