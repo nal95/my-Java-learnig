@@ -42,7 +42,26 @@ public class WebSecurityConfig {
         final CustomAuthenticationFilter filter = new CustomAuthenticationFilter(authenticationManager);
         filter.setFilterProcessesUrl(AppRouteConstants.SIGN_IN_URL);
 
-        http.csrf().disable().authorizeRequests();
+        http.csrf().disable()
+                .cors().disable()
+                .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
+                .authorizeRequests()
+                .antMatchers(HttpMethod.POST,
+                        AppRouteConstants.ADD_ROLE_TO_USER_URL,
+                        AppRouteConstants.ROLE_URL).hasAuthority("ROLE_DR_CHEF")
+                .antMatchers(HttpMethod.GET, AppRouteConstants.USER_URL).hasAuthority("ROLE_DR_CHEF")
+                .antMatchers(HttpMethod.POST, AppRouteConstants.CLINICAL_URL,
+                        AppRouteConstants.PATIENT_URL).hasAuthority("ROLE_MED")
+                .antMatchers(HttpMethod.GET, AppRouteConstants.CLINICAL_URL,
+                        AppRouteConstants.PATIENT_ANALYZE_URL,
+                        AppRouteConstants.PATIENTS_URL,
+                        AppRouteConstants.PATIENT_URL,
+                        AppRouteConstants.CLINICALS_URL).hasAuthority("ROLE_MED")
+                .antMatchers(HttpMethod.POST, AppRouteConstants.SIGN_UP_URL).permitAll()
+                .antMatchers(AppRouteConstants.SIGN_IN_URL).permitAll()
+                .antMatchers(HttpMethod.GET, AppRouteConstants.ROLE_URL).hasAuthority("ROLE_PASSIV")
+                .anyRequest().authenticated()
+                .and().addFilter(filter);
 
         return http.build();
     }
