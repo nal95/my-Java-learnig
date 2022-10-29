@@ -1,5 +1,7 @@
 package com.nal95.clinic.security;
 
+import com.nal95.clinic.security.filters.CustomAuthenticationFilter;
+import com.nal95.clinic.security.filters.CustomAuthorizationFilter;
 import com.nal95.clinic.services.UserService;
 import com.nal95.clinic.utils.AppRouteConstants;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +13,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
@@ -51,17 +54,17 @@ public class WebSecurityConfig {
                         AppRouteConstants.ROLE_URL).hasAuthority("ROLE_DR_CHEF")
                 .antMatchers(HttpMethod.GET, AppRouteConstants.USER_URL).hasAuthority("ROLE_DR_CHEF")
                 .antMatchers(HttpMethod.POST, AppRouteConstants.CLINICAL_URL,
-                        AppRouteConstants.PATIENT_URL).hasAuthority("ROLE_MED")
+                        AppRouteConstants.PATIENT_URL).hasAnyAuthority("ROLE_DR_CHEF", "ROLE_MED")
                 .antMatchers(HttpMethod.GET, AppRouteConstants.CLINICAL_URL,
                         AppRouteConstants.PATIENT_ANALYZE_URL,
                         AppRouteConstants.PATIENTS_URL,
                         AppRouteConstants.PATIENT_URL,
-                        AppRouteConstants.CLINICALS_URL).hasAuthority("ROLE_MED")
+                        AppRouteConstants.CLINICALS_URL).hasAnyAuthority("ROLE_DR_CHEF", "ROLE_MED")
                 .antMatchers(HttpMethod.POST, AppRouteConstants.SIGN_UP_URL).permitAll()
                 .antMatchers(AppRouteConstants.SIGN_IN_URL).permitAll()
                 .antMatchers(HttpMethod.GET, AppRouteConstants.ROLE_URL).hasAuthority("ROLE_PASSIV")
                 .anyRequest().authenticated()
-                .and().addFilter(filter);
+                .and().addFilter(filter).addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

@@ -7,6 +7,7 @@
           <option value="access_token" />
           <option value="refresh_token" />
           <option value="UUID" />
+          <option value="error" />
         </set>
       </option>
     </inspection_tool>

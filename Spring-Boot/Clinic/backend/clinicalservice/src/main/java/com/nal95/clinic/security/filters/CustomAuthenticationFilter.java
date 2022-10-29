@@ -1,4 +1,4 @@
-package com.nal95.clinic.security;
+package com.nal95.clinic.security.filters;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
