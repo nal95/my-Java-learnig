@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Clinic.iml" filepath="$PROJECT_DIR$/.idea/Clinic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/frontend/Clinicalservice.iml" filepath="$PROJECT_DIR$/frontend/Clinicalservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/frontend/clinicalapp.iml" filepath="$PROJECT_DIR$/frontend/clinicalapp.iml" />
       <module fileurl="file://$PROJECT_DIR$/backend/clinicalservice/clinicalservice.iml" filepath="$PROJECT_DIR$/backend/clinicalservice/clinicalservice.iml" />
     </modules>
