@@ -1,5 +1,23 @@
 
+m
+=backend/clinicalservice/.mvn/wrapper/maven-wrapper.properties,8\c\8c8e7a7d65ff9a1c548eb4525f57ace5e1868205
+R
+"backend/clinicalservice/.gitignore,4\d\4ddd449268723b9b088d246b7584ceee2bfa52d7
+~
+Nbackend/clinicalservice/src/main/java/com/nal95/clinic/model/ClinicalData.java,8\a\8a3ec7e298ca791802bcfa201fe05dc7cb14f418
+\
+,.idea/inspectionProfiles/Project_Default.xml,4\9\496a238a6afa168dbaf6efd37bb459331589579c
+|
+L.idea/libraries/Maven__org_springframework_spring_context_support_5_3_23.xml,b\7\b78db2e12947e192d90e8c3baff3f7d5dd8c5986
+Ç
+R.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_mail_2_7_4.xml,9\5\9519d210f0b64882f24caee5c54de5a16beb180a
+k
+;.idea/libraries/Maven__org_projectlombok_lombok_1_18_24.xml,e\3\e3631492191c257e535ea753f84db0f0f91375fd
+j
+:.idea/libraries/Maven__com_sun_mail_jakarta_mail_1_6_7.xml,8\5\8572d08374c7f67aaaa99fa2b26a770d49f6c650
+~
+Nbackend/clinicalservice/src/main/java/com/nal95/clinic/util/BMICalculator.java,3\9\39d74ffbaef99d2753ec24ad75e22950514ef717
 Ü
-Vbackend/clinicalservice/src/main/java/com/nal95/clinic/ClinicalserviceApplication.java,2\c\2c9f55326a16711417da6c04deadfe277515c521
-I
-backend/db/clinicaldb.sql,4\9\49dab4e00c8131ccb575af06ee697c9235d30648
+Vbackend/clinicalservice/src/main/java/com/nal95/clinic/api/ClinicalDataController.java,e\f\ef57dffce29eb49f8a35393f4da0f2442553e7dc
+Å
+Qbackend/clinicalservice/src/main/java/com/nal95/clinic/api/PatientController.java,c\1\c1fcc1c49e4b32f0f7de841742655bce047efd84
