@@ -55,9 +55,9 @@ public class AuthController {
         String returnValue = "";
 
         if (result){
-            returnValue = "User Verification Successful !!";
+            returnValue = "Account Activated Successful !!";
         }else {
-            returnValue = "Somthing apend in the verification proccess :(";
+            returnValue = "Somthing apend in the activation proccess :(";
         }
 
         return new ResponseEntity<>(returnValue,HttpStatus.OK);
