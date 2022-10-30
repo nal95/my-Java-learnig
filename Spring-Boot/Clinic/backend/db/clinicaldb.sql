@@ -21,6 +21,50 @@ CREATE TABLE clinicaldata (
   REFERENCES patient(id)
 );
 
+create table user
+(
+    id                        int auto_increment
+        primary key,
+    user_id                   varchar(50)                  not null,
+    first_name                varchar(20)                  not null,
+    last_name                 varchar(20)                  not null,
+    email                     varchar(50)                  not null,
+    title                     enum ('Dr', 'Med', 'Passiv') not null,
+    encrypted_password        varchar(256)                 not null,
+    email_verification_token  varchar(256)                 null,
+    email_verification_status tinyint(1) default 0         null,
+    constraint EMAIL
+        unique (email)
+);
+
+CREATE TABLE ROLE
+(
+    id int NOT NULL AUTO_INCREMENT,
+    name VARCHAR(20),
+    PRIMARY KEY (ID)
+);
+
+create table user_roles(
+                           user_id int,
+                           roles_id int,
+                           FOREIGN KEY (user_id)
+                               REFERENCES user(id),
+                           FOREIGN KEY (roles_id)
+                               REFERENCES role(id)
+);
+
+create table token
+(
+    id          int auto_increment
+        primary key,
+    expiry_date datetime(6)  null,
+    token       varchar(255) null,
+    user_id     int          null,
+    constraint FKe32ek7ixanakfqsdaokm4q9y2
+        foreign key (user_id) references user (id)
+);
+
+
 
 insert into patient values(1,'John','Mccain',52);
 insert into patient values(2,'Siva','Shankar',32);
@@ -137,5 +181,13 @@ insert into clinicaldata  values('99', '10', 'hr', '89', '2019-05-29 19:34:24');
 
 drop table clinicaldata;
 
-drop table patient
+drop table patient;
+
+drop table user;
+
+drop table role;
+
+drop table token;
+
+drop table user_roles;
 
