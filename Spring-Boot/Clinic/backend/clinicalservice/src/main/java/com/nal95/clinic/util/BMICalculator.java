@@ -4,7 +4,10 @@ import com.nal95.clinic.model.ClinicalData;
 
 import java.util.List;
 
-public class BMICalculator {
+public final class BMICalculator {
+    private  BMICalculator (){
+
+    }
     public static void calculateBMI(List<ClinicalData> clinicalData, ClinicalData eachEntry ){
         if(eachEntry.getComponentName().equals("hw")){
             String[] heightAndWeight = eachEntry.getComponentValue().split("/");
