@@ -217,9 +217,5 @@ N
 frontend/clinicalapp/README.md,f\8\f86a0f7ad13442ebfe2b77e931dd981731fb5cd1
 P
  frontend/clinicalapp/src/test.ts,2\0\20bb5d4c73785cf55204099ef6166a61e63d4c6a
-€
-Pbackend/clinicalservice/src/main/java/com/nal95/clinic/repos/UserRepository.java,6\f\6f57429a286371bd413c1c503fa9cc8507303e19
-v
-Fbackend/clinicalservice/src/main/java/com/nal95/clinic/model/User.java,d\7\d74298deedf913f96b568c5835874f2c852ba87e
 ]
 -frontend/clinicalapp/src/app/app.component.ts,6\b\6b4dddcad308be7db82e6c3c88dfa27307a45e77
