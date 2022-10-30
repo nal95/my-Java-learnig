@@ -1,6 +1,6 @@
 package com.nal95.clinic.api;
 
-import com.nal95.clinic.dto.ClinicalDataRequest;
+import com.nal95.clinic.dto.request.ClinicalDataRequest;
 import com.nal95.clinic.model.ClinicalData;
 import com.nal95.clinic.model.Patient;
 import com.nal95.clinic.repos.ClinicalDataRepository;
