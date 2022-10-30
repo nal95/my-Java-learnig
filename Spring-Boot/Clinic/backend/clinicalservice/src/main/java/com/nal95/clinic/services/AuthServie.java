@@ -6,4 +6,6 @@ import com.nal95.clinic.model.User;
 public interface AuthServie {
     void signup(UserRegistrationRequest user);
     User getCurrentUser();
+
+    boolean verifyAccount(String token);
 }

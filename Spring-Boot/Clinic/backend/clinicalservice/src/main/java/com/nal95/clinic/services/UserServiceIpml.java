@@ -33,7 +33,7 @@ public class UserServiceIpml implements UserService {
     @Transactional
     public boolean saveUser(UserRegistrationRequest user) {
         log.info("Saving a new user");
-        if (userRepository.findUserByEmail(user.getEmail()) != null || userRepository.findUserByUsername(user.getUsername()) != null )
+        if (userRepository.findUserByEmail(user.getEmail()) != null || userRepository.findUserByUsername(user.getUsername())!= null )
             throw new RuntimeException("DB already have this Credentials");
 
         User userToSave = new User();

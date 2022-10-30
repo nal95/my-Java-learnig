@@ -2,6 +2,7 @@ package com.nal95.clinic.services;
 
 import com.nal95.clinic.dto.request.NotificationEmail;
 import com.nal95.clinic.dto.request.UserRegistrationRequest;
+import com.nal95.clinic.exceptions.AuthException;
 import com.nal95.clinic.model.User;
 import com.nal95.clinic.model.VerificationToken;
 import com.nal95.clinic.repos.UserRepository;
@@ -9,6 +10,7 @@ import com.nal95.clinic.repos.VerificationTokenRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -27,7 +29,7 @@ public class AuthServieImpl implements AuthServie{
         String token = generateVerifacationToken(user);
         String subject = "Account Activation";
         String recipient = user.getEmail();
-        String body = "Welcome " + user.getTitle() + ". " + user.getLastName().toUpperCase()+ ". "
+        String body = "Welcome " + user.getTitle() + ". " + user.getLastName().toUpperCase()+ " "
                 + user.getFirstName().toUpperCase()
                 + "\nTo activate your account please ";
         mailService.sendMail(new NotificationEmail(subject,recipient,body),token);
@@ -36,6 +38,30 @@ public class AuthServieImpl implements AuthServie{
     @Override
     public User getCurrentUser() {
         return null;
+    }
+
+    @Override
+    public boolean verifyAccount(String token) {
+        Optional<VerificationToken> verificationToken = verificationTokenRepository.findByToken(token);
+        if (verificationToken.isEmpty()) {
+            throw new AuthException("Invalide Token");
+        }
+        VerificationToken value = verificationToken.get();
+
+        return fetchUserAndEnable(value);
+    }
+
+    private boolean fetchUserAndEnable(VerificationToken verificationToken) {
+        String username = verificationToken.getUser().getUsername();
+        User user = userRepository.findUserByUsername(username);
+        if(!user.equals(new User())){
+            user.setEnabled(true);
+            user = userRepository.save(user);
+        }else {
+            throw new AuthException("User not found with name - " + username);
+        }
+
+        return !user.equals(new User());
     }
 
     private String generateVerifacationToken(User user){

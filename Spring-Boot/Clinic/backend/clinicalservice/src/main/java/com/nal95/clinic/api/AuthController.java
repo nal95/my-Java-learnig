@@ -37,7 +37,7 @@ public class AuthController {
     @PostMapping(value = "/signup")
     public ResponseEntity<String> signup(@RequestBody UserRegistrationRequest user){
         boolean result = userService.saveUser(user);
-        log.info("result: "+result);
+
         String returnValue = "";
         if (result){
             authServie.signup(user);
@@ -45,6 +45,21 @@ public class AuthController {
         }else {
             returnValue = "Somthing apend in the registraion proccess";
         }
+        return new ResponseEntity<>(returnValue,HttpStatus.OK);
+
+    }
+
+    @GetMapping(value = "/user-verification/{token}")
+    public ResponseEntity<String> verification(@PathVariable String token){
+        boolean result = authServie.verifyAccount(token);
+        String returnValue = "";
+
+        if (result){
+            returnValue = "User Registration Successful";
+        }else {
+            returnValue = "Somthing apend in the registraion proccess";
+        }
+
         return new ResponseEntity<>(returnValue,HttpStatus.OK);
 
     }
