@@ -41,9 +41,9 @@ public class AuthController {
         String returnValue = "";
         if (result){
             authServie.signup(user);
-            returnValue = "User Registration Successful";
+            returnValue = "User Registration Successful !!";
         }else {
-            returnValue = "Somthing apend in the registraion proccess";
+            returnValue = "Somthing apend in the registraion proccess :(";
         }
         return new ResponseEntity<>(returnValue,HttpStatus.OK);
 
@@ -55,9 +55,9 @@ public class AuthController {
         String returnValue = "";
 
         if (result){
-            returnValue = "User Registration Successful";
+            returnValue = "User Verification Successful !!";
         }else {
-            returnValue = "Somthing apend in the registraion proccess";
+            returnValue = "Somthing apend in the verification proccess :(";
         }
 
         return new ResponseEntity<>(returnValue,HttpStatus.OK);
