@@ -4,6 +4,8 @@ import com.nal95.clinic.model.ClinicalData;
 import com.nal95.clinic.model.Patient;
 import com.nal95.clinic.repos.PatientRepository;
 import com.nal95.clinic.util.BMICalculator;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,16 +15,13 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin
+@AllArgsConstructor
+@Slf4j
 public class PatientController {
 
     private final PatientRepository repository;
     Map<String, String> filtersEntries = new HashMap<>();
-    private static final Logger LOGGER = LoggerFactory.getLogger(PatientController.class);
-    @Autowired
-    PatientController(PatientRepository repository){
-        this.repository = repository;
-    }
+
 
     @GetMapping(value = "/patients")
     public List<Patient> getPatients(){
@@ -44,16 +43,16 @@ public class PatientController {
         List<ClinicalData> clinicalData = patient.getClinicalData();
         List<ClinicalData> duplicateClinicalData = new ArrayList<>(clinicalData);
         for(ClinicalData eachEntry:duplicateClinicalData){
-            LOGGER.info("eachEntry Name " + eachEntry.getComponentName() +" eachEntry Value " + eachEntry.getComponentValue() );
+            log.info("eachEntry Name " + eachEntry.getComponentName() +" eachEntry Value " + eachEntry.getComponentValue() );
             if(filtersEntries.containsKey(eachEntry.getComponentName())){
                 clinicalData.remove(eachEntry);
                 continue;
             }else {
                 filtersEntries.put(eachEntry.getComponentName(),null);
             }
-            LOGGER.info("clinicalData: " + clinicalData  );
-            LOGGER.info("filtersEntries: " + filtersEntries  );
-            LOGGER.info("eachEntry: " + eachEntry  );
+            log.info("clinicalData: " + clinicalData  );
+            log.info("filtersEntries: " + filtersEntries  );
+            log.info("eachEntry: " + eachEntry  );
             BMICalculator.calculateBMI(clinicalData,eachEntry);
         }
         filtersEntries.clear();

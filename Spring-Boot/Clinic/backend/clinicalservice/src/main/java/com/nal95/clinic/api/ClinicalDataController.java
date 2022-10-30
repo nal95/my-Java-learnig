@@ -6,9 +6,8 @@ import com.nal95.clinic.model.Patient;
 import com.nal95.clinic.repos.ClinicalDataRepository;
 import com.nal95.clinic.repos.PatientRepository;
 import com.nal95.clinic.util.BMICalculator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -16,17 +15,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@AllArgsConstructor
+@Slf4j
 public class ClinicalDataController {
 
     private final ClinicalDataRepository clinicalDataRepository;
     private final PatientRepository patientRepository;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ClinicalDataController.class);
-    @Autowired
-    ClinicalDataController(ClinicalDataRepository clinicalDataRepository,PatientRepository patientRepository){
-        this.clinicalDataRepository = clinicalDataRepository;
-        this.patientRepository = patientRepository;
-    }
     @PostMapping("/clinicals")
     public ClinicalData saveClinicalData(@RequestBody ClinicalDataRequest request){
         Patient patient = patientRepository.findById(request.getPatientId()).orElseThrow();
@@ -44,7 +39,7 @@ public class ClinicalDataController {
             componentName = "hw";
         }
         List<ClinicalData> clinicalData = clinicalDataRepository.findByPatientIdAndComponentNameOrderByMeasuredDateTime(patientId,componentName);
-        LOGGER.info("clinicalData: " + clinicalData  );
+        log.info("clinicalData: " + clinicalData  );
         List<ClinicalData> duplicateClinicalData = new ArrayList<>(clinicalData);
         for(ClinicalData eachEntry:duplicateClinicalData){
             BMICalculator.calculateBMI(clinicalData,eachEntry);
