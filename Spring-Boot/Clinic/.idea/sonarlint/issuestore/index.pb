@@ -5,8 +5,6 @@ R
 "backend/clinicalservice/.gitignore,4\d\4ddd449268723b9b088d246b7584ceee2bfa52d7
 ~
 Nbackend/clinicalservice/src/main/java/com/nal95/clinic/model/ClinicalData.java,8\a\8a3ec7e298ca791802bcfa201fe05dc7cb14f418
-\
-,.idea/inspectionProfiles/Project_Default.xml,4\9\496a238a6afa168dbaf6efd37bb459331589579c
 |
 L.idea/libraries/Maven__org_springframework_spring_context_support_5_3_23.xml,b\7\b78db2e12947e192d90e8c3baff3f7d5dd8c5986
 Ç
@@ -17,7 +15,5 @@ j
 :.idea/libraries/Maven__com_sun_mail_jakarta_mail_1_6_7.xml,8\5\8572d08374c7f67aaaa99fa2b26a770d49f6c650
 ~
 Nbackend/clinicalservice/src/main/java/com/nal95/clinic/util/BMICalculator.java,3\9\39d74ffbaef99d2753ec24ad75e22950514ef717
-Ü
-Vbackend/clinicalservice/src/main/java/com/nal95/clinic/api/ClinicalDataController.java,e\f\ef57dffce29eb49f8a35393f4da0f2442553e7dc
 Å
 Qbackend/clinicalservice/src/main/java/com/nal95/clinic/api/PatientController.java,c\1\c1fcc1c49e4b32f0f7de841742655bce047efd84
