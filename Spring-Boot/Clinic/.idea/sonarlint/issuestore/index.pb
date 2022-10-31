@@ -57,8 +57,6 @@ v
 Fbackend/clinicalservice/src/main/java/com/nal95/clinic/util/Title.java,c\0\c06a73afeb9790b477b8faa53dee001c62372cd8
 ç
 ]backend/clinicalservice/src/main/java/com/nal95/clinic/repos/VerificationTokenRepository.java,e\a\eac4fd364c704735d54a59f7e6d1e666783dda7f
-I
-backend/db/clinicaldb.sql,4\9\49dab4e00c8131ccb575af06ee697c9235d30648
 \
 ,.idea/inspectionProfiles/Project_Default.xml,4\9\496a238a6afa168dbaf6efd37bb459331589579c
 ~
