@@ -9,6 +9,8 @@ import com.nal95.clinic.repos.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
@@ -92,5 +95,21 @@ public class UserServiceIpml implements UserService {
             responses.add(response);
         });
         return responses;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public UserDetails loadUserByUsername(String username) {
+        User user = userRepository.findUserByUsername(username);
+        if (user == null) throw new UsernameNotFoundException("No user " + "Found with username : " + username);
+
+        log.error("User found in the DB wiht name - " + user.getFirstName());
+        Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        user.getRoles().forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getName())));
+
+        return new org.springframework.security
+                .core.userdetails.User(user.getUsername(), user.getPassword(),
+                user.isEnabled(), true, true,
+                true, authorities);
     }
 }
