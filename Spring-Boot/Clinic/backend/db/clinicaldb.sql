@@ -3,22 +3,22 @@ create database clinicals;
 use clinicals;
 
 CREATE TABLE patient (
-    id int NOT NULL AUTO_INCREMENT,
-    last_name varchar(255) NOT NULL,
-    first_name varchar(255) NOT NULL,
-    age int,
-    PRIMARY KEY (id)
+                         id int NOT NULL AUTO_INCREMENT,
+                         last_name varchar(255) NOT NULL,
+                         first_name varchar(255) NOT NULL,
+                         age int,
+                         PRIMARY KEY (id)
 );
 
 CREATE TABLE clinicaldata (
-    id int NOT NULL AUTO_INCREMENT,
-    patient_id int,
-    component_name varchar(255) NOT NULL,
-    component_value varchar(255) NOT NULL,
-    measured_date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (id),
-     CONSTRAINT fk_patient FOREIGN KEY (patient_id)
-  REFERENCES patient(id)
+                              id int NOT NULL AUTO_INCREMENT,
+                              patient_id int,
+                              component_name varchar(255) NOT NULL,
+                              component_value varchar(255) NOT NULL,
+                              measured_date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                              PRIMARY KEY (id),
+                              CONSTRAINT fk_patient FOREIGN KEY (patient_id)
+                                  REFERENCES patient(id)
 );
 
 create table user
@@ -45,13 +45,25 @@ CREATE TABLE ROLE
 );
 
 create table user_roles(
-                          user_id int,
-                          roles_id int,
-                          FOREIGN KEY (user_id)
-                              REFERENCES user(id),
-                          FOREIGN KEY (roles_id)
-                              REFERENCES role(id)
+                           user_id int,
+                           roles_id int,
+                           FOREIGN KEY (user_id)
+                               REFERENCES user(id),
+                           FOREIGN KEY (roles_id)
+                               REFERENCES role(id)
 );
+
+create table token
+(
+    id          int auto_increment
+        primary key,
+    expiry_date datetime(6)  null,
+    token       varchar(255) null,
+    user_id     int          null,
+    constraint FKe32ek7ixanakfqsdaokm4q9y2
+        foreign key (user_id) references user (id)
+);
+
 
 
 insert into patient values(1,'John','Mccain',52);
@@ -118,7 +130,7 @@ insert into clinicaldata  values('48', '9', 'bp', '67/119', '2019-04-19 19:34:24
 insert into clinicaldata  values('49', '10', 'bp', '37/89', '2019-05-29 19:34:24');
 
 insert into clinicaldata  values('51', '1', 'hr', '67', '2018-07-09 19:34:24');
-insert into clinicaldata  values('52', '2', 'hr', '115', '2018-06-19 19:34:24');	
+insert into clinicaldata  values('52', '2', 'hr', '115', '2018-06-19 19:34:24');
 insert into clinicaldata  values('53', '3', 'hr', '72', '2018-07-26 19:34:24');
 insert into clinicaldata  values('54', '4', 'hr', '74', '2018-08-03 19:34:24');
 insert into clinicaldata  values('55', '5', 'hr', '119', '2018-08-29 19:34:24');
@@ -175,7 +187,7 @@ drop table user;
 
 drop table role;
 
+drop table token;
 
 drop table user_roles;
-
 
