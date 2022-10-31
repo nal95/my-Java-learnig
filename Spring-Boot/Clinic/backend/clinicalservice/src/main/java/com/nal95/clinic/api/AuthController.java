@@ -3,6 +3,7 @@ package com.nal95.clinic.api;
 
 import com.nal95.clinic.dto.request.UserLoginRequest;
 import com.nal95.clinic.dto.request.UserRegistrationRequest;
+import com.nal95.clinic.dto.response.AuthenticationResponse;
 import com.nal95.clinic.dto.response.RegistrationResponse;
 import com.nal95.clinic.dto.response.UserResponse;
 import com.nal95.clinic.model.Role;
@@ -64,7 +65,8 @@ public class AuthController {
 
     }
     @PostMapping(value = "/login")
-    public ResponseEntity<UserResponse> login(@RequestBody UserLoginRequest user){
+    public AuthenticationResponse login(@RequestBody UserLoginRequest user){
+        return authServie.loing(user);
 /*        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("api/user/login").toString());
         User userInDb = userService.getUser(user.getUsername());
 
@@ -81,7 +83,6 @@ public class AuthController {
         }
 
         return ResponseEntity.created(uri).body(response);*/
-        return null;
 
     }
 

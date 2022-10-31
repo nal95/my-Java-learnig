@@ -1,13 +1,19 @@
 package com.nal95.clinic.services;
 
 import com.nal95.clinic.dto.request.NotificationEmail;
+import com.nal95.clinic.dto.request.UserLoginRequest;
 import com.nal95.clinic.dto.request.UserRegistrationRequest;
+import com.nal95.clinic.dto.response.AuthenticationResponse;
 import com.nal95.clinic.exceptions.AuthException;
 import com.nal95.clinic.model.User;
 import com.nal95.clinic.model.VerificationToken;
 import com.nal95.clinic.repos.UserRepository;
 import com.nal95.clinic.repos.VerificationTokenRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -17,10 +23,15 @@ import java.util.UUID;
 @Service
 public class AuthServieImpl implements AuthServie{
 
-    private VerificationTokenRepository verificationTokenRepository;
-    private UserRepository userRepository;
+    private final VerificationTokenRepository verificationTokenRepository;
+    private final UserRepository userRepository;
 
-    private MailService mailService;
+    private final MailService mailService;
+
+    private final AuthenticationManager authenticationManager;
+
+    private final JwtProvider jwtProvider;
+
 
     @Override
     public void signup(UserRegistrationRequest request) {
@@ -49,6 +60,18 @@ public class AuthServieImpl implements AuthServie{
         VerificationToken value = verificationToken.get();
 
         return fetchUserAndEnable(value);
+    }
+
+    @Override
+    public AuthenticationResponse loing(UserLoginRequest user) {
+        Authentication authenticate = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(user.getUsername(),user.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(authenticate);
+        String token = jwtProvider.generateToken(authenticate);
+        return AuthenticationResponse.builder()
+                .authenticationToken(token)
+                .username(user.getUsername())
+                .build();
     }
 
     private boolean fetchUserAndEnable(VerificationToken verificationToken) {
