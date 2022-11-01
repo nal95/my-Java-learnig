@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65441839-4fe9-43c4-a24a-e48ab8092d6a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/clinicalservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/clinicalservice/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/clinicalservice/src/main/java/com/nal95/clinic/api/ClinicalDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/clinicalservice/src/main/java/com/nal95/clinic/api/ClinicalDataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/clinicalservice/src/main/java/com/nal95/clinic/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/clinicalservice/src/main/java/com/nal95/clinic/security/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +30,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/nguepi-Jiometio/Documents/my-Java-learnig/Spring-Boot/Clinic/frontend"
+    "last_opened_file_path": "C:/Users/nguepi-Jiometio/Documents/my-Java-learnig/Spring-Boot/Clinic/frontend",
+    "ts.external.directory.path": "C:\\Users\\nguepi-Jiometio\\Documents\\my-Java-learnig\\Spring-Boot\\Clinic\\frontend\\clinicalapp\\node_modules\\typescript\\lib"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -36,6 +43,8 @@
       <option name="presentableId" value="Default" />
       <updated>1665967719526</updated>
       <workItem from="1665967720829" duration="172000" />
+      <workItem from="1667237603002" duration="22000" />
+      <workItem from="1667239000538" duration="26000" />
     </task>
     <servers />
   </component>

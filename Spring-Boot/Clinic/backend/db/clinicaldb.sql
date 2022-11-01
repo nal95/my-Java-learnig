@@ -44,6 +44,7 @@ CREATE TABLE ROLE
     PRIMARY KEY (ID)
 );
 
+
 create table user_roles(
                            user_id int,
                            roles_id int,
@@ -52,6 +53,11 @@ create table user_roles(
                            FOREIGN KEY (roles_id)
                                REFERENCES role(id)
 );
+
+
+
+insert into role values(0,'ROLE_DR_CHEF');
+insert into user_roles values(1,1);
 
 create table token
 (

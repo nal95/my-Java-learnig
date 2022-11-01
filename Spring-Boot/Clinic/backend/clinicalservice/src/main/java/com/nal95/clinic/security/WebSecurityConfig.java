@@ -6,7 +6,6 @@ import com.nal95.clinic.services.UserService;
 import com.nal95.clinic.utils.AppRouteConstants;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,8 +13,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
-import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 @Configuration
 @EnableWebSecurity
@@ -47,22 +44,24 @@ public class WebSecurityConfig {
 
         http.csrf().disable()
                 .cors().disable()
-                .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
+//                .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST,
+                .antMatchers(
+                        AppRouteConstants.SIGN_IN_URL,
+                        AppRouteConstants.SIGN_UP_URL,
+                        AppRouteConstants.REFRESH_TOKEN
+                ).permitAll()
+                .antMatchers(
+                        AppRouteConstants.USER_URL,
+                        AppRouteConstants.ROLE_URL,
                         AppRouteConstants.ADD_ROLE_TO_USER_URL,
-                        AppRouteConstants.ROLE_URL).hasAuthority("ROLE_DR_CHEF")
-                .antMatchers(HttpMethod.GET, AppRouteConstants.USER_URL).hasAuthority("ROLE_DR_CHEF")
-                .antMatchers(HttpMethod.POST, AppRouteConstants.CLINICAL_URL,
-                        AppRouteConstants.PATIENT_URL).hasAnyAuthority("ROLE_DR_CHEF", "ROLE_MED")
-                .antMatchers(HttpMethod.GET, AppRouteConstants.CLINICAL_URL,
-                        AppRouteConstants.PATIENT_ANALYZE_URL,
-                        AppRouteConstants.PATIENTS_URL,
+                        AppRouteConstants.CLINICAL_URL,
+                        AppRouteConstants.CLINICAL_DATE_URL
+                ).hasAnyAuthority("ROLE_DR_CHEF", "ROLE_MED")
+                .antMatchers(
                         AppRouteConstants.PATIENT_URL,
-                        AppRouteConstants.CLINICALS_URL).hasAnyAuthority("ROLE_DR_CHEF", "ROLE_MED")
-                .antMatchers(HttpMethod.POST, AppRouteConstants.SIGN_UP_URL).permitAll()
-                .antMatchers(AppRouteConstants.SIGN_IN_URL).permitAll()
-                .antMatchers(HttpMethod.GET, AppRouteConstants.ROLE_URL).hasAuthority("ROLE_PASSIV")
+                        AppRouteConstants.PATIENTS_URL
+                ).hasAnyAuthority("ROLE_DR_CHEF", "ROLE_MED", "ROLE_PASSIVE")
                 .anyRequest().authenticated()
                 .and().addFilter(filter).addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
 

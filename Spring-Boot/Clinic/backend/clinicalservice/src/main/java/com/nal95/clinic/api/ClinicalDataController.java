@@ -6,11 +6,8 @@ import com.nal95.clinic.model.Patient;
 import com.nal95.clinic.repos.ClinicalDataRepository;
 import com.nal95.clinic.repos.PatientRepository;
 import com.nal95.clinic.utils.BMICalculator;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -18,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Slf4j
 public class ClinicalDataController {
 

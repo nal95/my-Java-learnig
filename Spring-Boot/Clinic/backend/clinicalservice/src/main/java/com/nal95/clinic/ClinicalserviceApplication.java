@@ -28,7 +28,7 @@ public class ClinicalserviceApplication {
         return new SpringApplicationContext();
     }
 
-    /*@Bean
+/*    @Bean
     CommandLineRunner runner(UserService userService){
 
         return args -> {
@@ -39,7 +39,8 @@ public class ClinicalserviceApplication {
 
             userService.saveUser(new UserDtoRequest("Nal", "alex", "nal@wed.de", "test", Title.Dr, null, false, new ArrayList<>()));
             userService.saveUser(new UserDtoRequest("Müller", "Karl", "karl@wed.de", "test", Title.Med, null, false, new ArrayList<>()));
-            userService.saveUser(new UserDtoRequest("Ali", "Momo", "Momo@wed.de", "test", Title.Med, null, false, new ArrayList<>()));
+            userService.saveUser(new UserDtoRequest("Ali", "momo", "momo@wed.de", "test", Title.Med, null, false, new ArrayList<>()));
+            userService.saveUser(new UserDtoRequest("Schwarznager", "arnold", "arnold@wed.de", "test", Title.Med, null, false, new ArrayList<>()));
 
             userService.addRoleToUser("nal@wed.de", "ROLE_DR_CHEF");
             userService.addRoleToUser("arnold@wed.de", "ROLE_DR_CHEF");
