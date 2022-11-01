@@ -10,7 +10,7 @@ export class RegistrationComponent {
   public titles = [
     {value: 'dr-0', viewValue: 'Dr'},
     {value: 'med-1', viewValue: 'Med'},
-    {value: 'passiv-2', viewValue: 'Passiv'}
+    {value: 'passive-2', viewValue: 'Passive'}
   ];
 
 

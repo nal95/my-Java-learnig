@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "clinicalapp": {
+    "clinicalWeb": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/clinicalapp",
+            "outputPath": "dist/clinical-web",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "clinicalapp:build:production"
+              "browserTarget": "clinicalWeb:build:production"
             },
             "development": {
-              "browserTarget": "clinicalapp:build:development"
+              "browserTarget": "clinicalWeb:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "clinicalapp:build"
+            "browserTarget": "clinicalWeb:build"
           }
         },
         "test": {
@@ -101,6 +101,6 @@
     }
   },
   "cli": {
-    "analytics": "b0bee589-2444-48dc-9bec-fd0559775145"
+    "analytics": false
   }
 }

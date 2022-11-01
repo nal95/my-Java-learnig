@@ -1,6 +1,9 @@
 package com.nal95.clinic.utils;
 
 public class AppRouteConstants {
+    private AppRouteConstants(){
+        //notting
+    }
 
     public static final String USER = "/api/user"; //POST
     public static final String API = "/api"; //POST

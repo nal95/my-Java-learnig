@@ -1,16 +1,9 @@
 package com.nal95.clinic;
 
-import com.nal95.clinic.dto.requests.UserDtoRequest;
-import com.nal95.clinic.model.Role;
-import com.nal95.clinic.services.UserService;
-import com.nal95.clinic.utils.Title;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-import java.util.ArrayList;
 
 @SpringBootApplication
 public class ClinicalserviceApplication {

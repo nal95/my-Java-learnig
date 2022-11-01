@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
 
         String publicUserId = uuidUtil.generateUserId(30);
         userToSave.setUserId(publicUserId);
-        userToSave.setEncryptedPassword(bCryptPasswordEncoder.encode(userToSave.getEncryptedPassword()));
+        userToSave.setPassword(bCryptPasswordEncoder.encode(userToSave.getPassword()));
 
         log.info("Saving a new user {}", userToSave);
 
@@ -97,6 +97,6 @@ public class UserServiceImpl implements UserService {
         user.getRoles().forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getName())));
 
         return new org.springframework.security.core
-                .userdetails.User(user.getEmail(),user.getEncryptedPassword(),authorities);
+                .userdetails.User(user.getEmail(),user.getPassword(),authorities);
     }
 }

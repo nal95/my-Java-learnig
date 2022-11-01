@@ -14,6 +14,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
@@ -44,7 +46,7 @@ public class WebSecurityConfig {
 
         http.csrf().disable()
                 .cors().disable()
-//                .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
+                .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
                 .authorizeRequests()
                 .antMatchers(
                         AppRouteConstants.SIGN_IN_URL,
