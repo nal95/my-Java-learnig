@@ -1,9 +1,13 @@
 package com.nal95.clinic.model;
 
 import com.nal95.clinic.utils.Title;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -16,7 +20,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(nullable=false)
     private String userId;
@@ -24,6 +28,9 @@ public class User {
     private String firstName;
 
     private String lastName;
+
+    @Column(nullable = false, unique = true)
+    private String username;
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -34,10 +41,10 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Title title;
 
-    private String emailVerificationToken;
+    private Instant created;
 
     @Column(nullable = false,columnDefinition = "boolean default false")
-    private boolean emailVerificationStatus;
+    private boolean enabled;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles = new ArrayList<>();

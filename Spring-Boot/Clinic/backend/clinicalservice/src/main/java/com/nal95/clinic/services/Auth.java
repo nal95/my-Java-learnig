@@ -1,11 +1,14 @@
-package com.nal95.clinic.utils;
+package com.nal95.clinic.services;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nal95.clinic.dto.responses.UserResponse;
 import com.nal95.clinic.model.Role;
 import com.nal95.clinic.model.User;
+import com.nal95.clinic.repos.UserRepository;
 import com.nal95.clinic.security.filters.CustomAuthenticationFilter;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -22,18 +25,23 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class Auth {
-    public void doFilterInternalErrorUtil(Exception exception,HttpServletResponse response ) throws IOException {
+    private final UserRepository userRepository;
+
+    public void doFilterInternalErrorUtil(Exception exception, HttpServletResponse response) throws IOException {
         response.setHeader("error", exception.getMessage());
         response.setStatus(FORBIDDEN.value());
 
         Map<String, String> error = new HashMap<>();
         error.put("error_message", exception.getMessage());
         response.setContentType(APPLICATION_JSON_VALUE);
-        new ObjectMapper().writeValue(response.getOutputStream(),error);
+        new ObjectMapper().writeValue(response.getOutputStream(), error);
     }
 
-    public String createAccessToken(HttpServletRequest request, User user, Algorithm algorithm ){
+    public String createAccessToken(HttpServletRequest request, UserResponse userResponse, Algorithm algorithm) {
+
+        User user = userRepository.findUserByUsername(userResponse.getUsername());
 
         return JWT.create()
                 .withSubject(user.getEmail())
@@ -44,7 +52,11 @@ public class Auth {
 
     }
 
-    public void setHttpResponse(HttpServletResponse response, String access_token, String refresh_token, com.nal95.clinic.model.User user ) throws IOException {
-        CustomAuthenticationFilter.mapToResponse(response, user, access_token, refresh_token);
+    public void setHttpResponse(HttpServletResponse response, String access_token, String refresh_token, UserResponse user) {
+        Map<String, String> tokens = new HashMap<>();
+        tokens.put("access_token", access_token);
+        tokens.put("refresh_token", refresh_token);
+        tokens.put("UUID",  user.getUserId());
+        response.setContentType(APPLICATION_JSON_VALUE);
     }
 }

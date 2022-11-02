@@ -4,6 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nal95.clinic.SpringApplicationContext;
+import com.nal95.clinic.dto.responses.UserResponse;
 import com.nal95.clinic.services.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -53,7 +54,7 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
 
         UserService userService = (UserService) SpringApplicationContext.getBean("userServiceImpl");
 
-        com.nal95.clinic.model.User realUser = userService.getUser(user.getUsername());
+        UserResponse realUser = userService.getUser(user.getUsername());
 
         String access_token = JWT.create()
                 .withSubject(user.getUsername())
@@ -68,15 +69,10 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
                 .withIssuer(request.getRequestURI())
                 .sign(algorithm);
 
-        mapToResponse(response, realUser, access_token, refresh_token);
-    }
-
-    public static void mapToResponse(HttpServletResponse response, com.nal95.clinic.model.User realUser, String access_token, String refresh_token) throws IOException {
         Map<String, String> tokens = new HashMap<>();
         tokens.put("access_token", access_token);
         tokens.put("refresh_token", refresh_token);
         tokens.put("UUID",  realUser.getUserId());
         response.setContentType(APPLICATION_JSON_VALUE);
-        new ObjectMapper().writeValue(response.getOutputStream(),tokens);
     }
 }

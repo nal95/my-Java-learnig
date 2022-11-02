@@ -4,14 +4,15 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.nal95.clinic.dto.requests.UserDtoRequest;
+import com.nal95.clinic.dto.requests.UserRegistrationRequest;
+import com.nal95.clinic.dto.responses.UserResponse;
 import com.nal95.clinic.model.Role;
-import com.nal95.clinic.model.User;
+import com.nal95.clinic.services.Auth;
 import com.nal95.clinic.services.UserService;
-import com.nal95.clinic.utils.Auth;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -34,14 +35,23 @@ public class AuthController {
     private final Auth auth;
 
     @GetMapping(value = "/all")
-    public ResponseEntity<List<User>> getUsers(){
+    public ResponseEntity<List<UserResponse>> getUsers(){
         return ResponseEntity.ok().body(userService.getUsers());
     }
 
     @PostMapping(value = "/registration")
-    public ResponseEntity<User> createUsers(@RequestBody UserDtoRequest user){
-        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("api/user/registration").toString());
-        return ResponseEntity.created(uri).body(userService.saveUser(user));
+    public ResponseEntity<String> signup(@RequestBody UserRegistrationRequest user){
+        log.info("in SignUp Controller");
+        boolean result = userService.saveUser(user);
+
+        String returnValue = "";
+        if (result){
+            userService.signup(user);
+            returnValue = "User Registration Successful !!";
+        }else {
+            returnValue = "Something append in the registration process :(";
+        }
+        return new ResponseEntity<>(returnValue, HttpStatus.OK);
     }
 
     @PostMapping(value = "/role")
@@ -68,7 +78,8 @@ public class AuthController {
                 DecodedJWT decodedJWT = verifier.verify(refresh_token);
 
                 String username = decodedJWT.getSubject();
-                User user = userService.getUser(username);
+
+                UserResponse user = userService.getUser(username);
 
                 String access_token = auth.createAccessToken(request,user,algorithm);
                 auth.setHttpResponse(response, access_token, refresh_token, user);

@@ -4,7 +4,9 @@ public class AppRouteConstants {
     private AppRouteConstants(){
         //notting
     }
+    public static final String EMAIL = "springtest95@gmail.com";
 
+    public static final String VERIFICATION_LINK = "http://localhost:8080/clinicalservices/api/auth/user-verification/";
     public static final String USER = "/api/user"; //POST
     public static final String API = "/api"; //POST
     public static final String SIGN_IN_URL = USER + "/login"; //POST

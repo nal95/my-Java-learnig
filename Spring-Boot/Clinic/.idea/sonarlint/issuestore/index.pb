@@ -179,13 +179,19 @@ Xbackend/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2
 Qbackend/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_13_4.xml,7\2\72cfeca75a6c37415c70e141b1fc7ac776c8d3f6
 …
 Ubackend/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_13_4.xml,1\1\1126d00d06d9b33757a6ce3f8953ef1a80c98bdf
-€
-Pbackend/clinicalservice/src/main/java/com/nal95/clinic/repos/UserRepository.java,6\f\6f57429a286371bd413c1c503fa9cc8507303e19
-O
-backend/clinicalservice/pom.xml,7\e\7eb676764b4c6718e519c6e01116dcad3922891e
 †
 Vbackend/clinicalservice/src/main/java/com/nal95/clinic/api/ClinicalDataController.java,e\f\ef57dffce29eb49f8a35393f4da0f2442553e7dc
-I
-backend/db/clinicaldb.sql,4\9\49dab4e00c8131ccb575af06ee697c9235d30648
 „
 Tbackend/clinicalservice/src/main/java/com/nal95/clinic/SpringApplicationContext.java,c\2\c25f8cbdb74bf3eb58569ce9aff257399f7a8cb6
+]
+-frontend/clinicalWeb/src/app/app.component.ts,e\d\ed03d6f179ba16af97debfc56eac5d1c0021ceb3
+b
+2frontend/clinicalWeb/src/app/app.component.spec.ts,6\7\67e2d409166de20c96b07bd8c41a2860fadda625
+I
+backend/db/clinicaldb.sql,4\9\49dab4e00c8131ccb575af06ee697c9235d30648
+Œ
+\backend/clinicalservice/src/main/java/com/nal95/clinic/dto/requests/ClinicalDataRequest.java,4\0\404251bf10a780dfb5c515048175c87977b87451
+ˆ
+Xbackend/clinicalservice/src/main/java/com/nal95/clinic/repos/ClinicalDataRepository.java,0\d\0d44eb0940431cd2f311d534f8a1b789eee29019
+ƒ
+Sbackend/clinicalservice/src/main/java/com/nal95/clinic/repos/PatientRepository.java,e\f\efb55a56d3a40f65516eb2d35e40e51c8f2cd7ca
