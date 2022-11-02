@@ -29,7 +29,7 @@ import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 @RequiredArgsConstructor
 @RequestMapping("/api/user")
 @Slf4j
-public class UserController {
+public class AuthController {
     private final UserService userService;
     private final Auth auth;
 
