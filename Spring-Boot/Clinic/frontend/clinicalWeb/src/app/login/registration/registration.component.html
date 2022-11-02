@@ -1,30 +1,35 @@
 <mat-card>
   <mat-card-title>Registration</mat-card-title>
   <mat-card-content>
-    <form class="my-form">
+    <form class="my-form" [formGroup]="signupForm">
       <p>
         <mat-form-field >
-          <input  matInput  placeholder="First Name" required>
+          <input  matInput [formControlName]="'firstName'"  placeholder="First Name" required>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field >
-          <input  matInput  placeholder="Last Name"  required>
+          <input  matInput [formControlName]="'lastName'"  placeholder="Last Name"  required>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field >
-          <input  matInput  placeholder="Email" >
+          <input  matInput [formControlName]="'userName'"  placeholder="User Name"  required>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field >
+          <input  matInput [formControlName]="'email'"  placeholder="Email" required>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field>
-          <input  matInput  placeholder="Password"  >
+          <input  matInput [formControlName]="'password'"  placeholder="Password" required>
         </mat-form-field></p>
       <p>
         <mat-form-field appearance="fill">
           <mat-label>Title</mat-label>
-          <mat-select>
+          <mat-select [formControlName]="'title'" required>
             <mat-option *ngFor="let title of titles" [value]="title.value">
               {{title.viewValue}}
             </mat-option>
@@ -33,7 +38,7 @@
       </p>
 
       <div class="button">
-        <button type="submit" mat-button>Register</button>
+        <button type="submit" mat-button (click)="signup()">Register</button>
       </div>
 
     </form>

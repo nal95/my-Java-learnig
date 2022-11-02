@@ -6,8 +6,6 @@ import com.nal95.clinic.services.UserService;
 import com.nal95.clinic.utils.AppRouteConstants;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -20,12 +18,12 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig {
+public class SecurityConfig {
 
     private final UserService userDetailsService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public WebSecurityConfig (UserService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder){
+    public SecurityConfig(UserService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder){
         this.userDetailsService = userDetailsService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
@@ -53,14 +51,15 @@ public class WebSecurityConfig {
                 .antMatchers(
                         AppRouteConstants.SIGN_IN_URL,
                         AppRouteConstants.SIGN_UP_URL,
-                        AppRouteConstants.REFRESH_TOKEN
+                        AppRouteConstants.REFRESH_TOKEN,
+                        AppRouteConstants.TOKEN_VERIFICATION
                 ).permitAll()
                 .antMatchers(
                         AppRouteConstants.USER_URL,
                         AppRouteConstants.ROLE_URL,
                         AppRouteConstants.ADD_ROLE_TO_USER_URL,
                         AppRouteConstants.CLINICAL_URL,
-                        AppRouteConstants.CLINICAL_DATE_URL
+                        AppRouteConstants.CLINICAL_DATA_URL
                 ).hasAnyAuthority("ROLE_DR_CHEF", "ROLE_MED")
                 .antMatchers(
                         AppRouteConstants.PATIENT_URL,
@@ -71,5 +70,4 @@ public class WebSecurityConfig {
 
         return http.build();
     }
-
 }

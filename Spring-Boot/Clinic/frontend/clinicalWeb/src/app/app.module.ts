@@ -10,7 +10,6 @@ import {HomeModule} from "./home/home.module";
 import {LoginModule} from "./login/login.module";
 import { MaterialModule } from './material.module';
 import {HttpClientModule} from "@angular/common/http";
-import {httpInterceptorProviders} from "./helpers/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -27,7 +26,7 @@ import {httpInterceptorProviders} from "./helpers/auth.interceptor";
     HttpClientModule,
   ],
 
-  providers: [httpInterceptorProviders],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

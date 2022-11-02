@@ -7,7 +7,6 @@ import com.nal95.clinic.dto.responses.UserResponse;
 import com.nal95.clinic.model.Role;
 import com.nal95.clinic.model.User;
 import com.nal95.clinic.repos.UserRepository;
-import com.nal95.clinic.security.filters.CustomAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -52,11 +51,12 @@ public class Auth {
 
     }
 
-    public void setHttpResponse(HttpServletResponse response, String access_token, String refresh_token, UserResponse user) {
+    public void setHttpResponse(HttpServletResponse response, String access_token, String refresh_token, UserResponse user ) throws IOException {
         Map<String, String> tokens = new HashMap<>();
         tokens.put("access_token", access_token);
         tokens.put("refresh_token", refresh_token);
         tokens.put("UUID",  user.getUserId());
         response.setContentType(APPLICATION_JSON_VALUE);
+        new ObjectMapper().writeValue(response.getOutputStream(),tokens);
     }
 }

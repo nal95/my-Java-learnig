@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import {URL_LOGIN} from "../util/api-routes";
+import {Observable, tap} from 'rxjs';
+import {URL_LOGIN, URL_SIGNUP} from "../util/api-routes";
+import {UserResponse, Users} from "../models/users";
 
 
 
@@ -12,35 +13,23 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Accept': 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded'
-      })
-    };
+    let body = `username=${username}&password=${password}`;
     return this.http.post<any>(
       URL_LOGIN,
-      {
-        username,
-        password,
-      },
-      httpOptions
+      body,
+    {
+      headers:{
+        'Content-Type': 'application/x-www-form-urlencoded',
+      }
+    }
+    ).pipe(
+      tap((res)=>console.log("RES: ", res))
     );
   }
-
-/*  register(username: string, email: string, password: string): Observable<any> {
-    return this.http.post(
-      AUTH_API + 'signup',
-      {
-        username,
-        email,
-        password,
-      },
-      httpOptions
+  signup(user: Users): Observable<any> {
+    return this.http.post<any>(
+      URL_SIGNUP,
+      user,
     );
   }
-
-  logout(): Observable<any> {
-    return this.http.post(AUTH_API + 'signout', { }, httpOptions);
-  }*/
 }

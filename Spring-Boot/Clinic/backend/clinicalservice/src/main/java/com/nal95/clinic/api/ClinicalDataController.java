@@ -22,7 +22,7 @@ public class ClinicalDataController {
     private final ClinicalDataRepository clinicalDataRepository;
     private final PatientRepository patientRepository;
 
-    @PostMapping("/clinicals")
+    @PostMapping("/clinical-data")
     public ClinicalData saveClinicalData(@RequestBody ClinicalDataRequest request){
         Patient patient = patientRepository.findById(request.getPatientId()).orElseThrow();
         ClinicalData clinicalData = new ClinicalData();
@@ -32,7 +32,7 @@ public class ClinicalDataController {
         return clinicalDataRepository.save(clinicalData);
     }
 
-    @GetMapping(value="/clinicals/{patientId}/{componentName}")
+    @GetMapping(value="/clinical-data/{patientId}/{componentName}")
     public List<ClinicalData> getClinicalData(@PathVariable("patientId") int patientId,
                                               @PathVariable("componentName") String componentName){
         if(componentName.equalsIgnoreCase("BMI")){

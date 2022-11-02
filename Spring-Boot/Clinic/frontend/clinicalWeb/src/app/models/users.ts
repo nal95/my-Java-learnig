@@ -1,26 +1,25 @@
 export interface Users {
   firstName: string,
   lastName: string,
+  username:string,
   email: string,
-  title: Title,
-  encryptedPassword: string
+  password: string,
+  title: string
 }
 
 export enum Title {
   'Dr',
   'Med',
-  'Passiv'
+  'Passive'
 }
 
 export interface User {
   email: string,
-  encryptedPassword: string
+  password: string
 }
 
 export interface UserResponse {
-  userId: string,
-  firstName: string,
-  lastName: string,
-  email: string,
-  title: Title
+  access_token: string,
+  refresh_token: string,
+  UUID: string
 }

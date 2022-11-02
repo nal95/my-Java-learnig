@@ -8,11 +8,11 @@ import {AuthService} from "../services/auth.service";
 })
 export class LoginComponent {
 
-  constructor(private readonly httpService:AuthService) {
+  constructor(private readonly autService:AuthService) {
   }
 
   login(email: string, pwd: string) {
-    this.httpService.login(email,pwd).subscribe({
+    this.autService.login(email,pwd).subscribe({
       error:()=>alert("error by login"),
       next: (res)=>console.log(res)
       }

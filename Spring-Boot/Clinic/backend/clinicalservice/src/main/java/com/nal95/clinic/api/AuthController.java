@@ -29,17 +29,13 @@ import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/user")
+@CrossOrigin("*")
 @Slf4j
 public class AuthController {
     private final UserService userService;
     private final Auth auth;
 
-    @GetMapping(value = "/all")
-    public ResponseEntity<List<UserResponse>> getUsers(){
-        return ResponseEntity.ok().body(userService.getUsers());
-    }
-
-    @PostMapping(value = "/registration")
+    @PostMapping(value = "/signup")
     public ResponseEntity<String> signup(@RequestBody UserRegistrationRequest user){
         log.info("in SignUp Controller");
         boolean result = userService.saveUser(user);
@@ -92,6 +88,25 @@ public class AuthController {
             throw new RuntimeException("Refresh token is missing");
         }
     }
+    @GetMapping(value = "/verification/{token}")
+    public ResponseEntity<String> verification(@PathVariable String token){
+        boolean result = userService.verifyAccount(token);
+        String returnValue = "";
+
+        if (result){
+            returnValue = "Account Activated Successful !!";
+        }else {
+            returnValue = "Somthing apend in the activation proccess :(";
+        }
+
+        return new ResponseEntity<>(returnValue,HttpStatus.OK);
+
+    }
+    @GetMapping(value = "/all")
+    public ResponseEntity<List<UserResponse>> getUsers(){
+        return ResponseEntity.ok().body(userService.getUsers());
+    }
+
 }
 
 @Data

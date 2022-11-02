@@ -77,6 +77,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void addRoleToUser(String email, String roleName) {
         String name = userRepository.findUserByEmail(email).getFirstName();
         log.info("Adding new Role {} to User {} ", roleName, name);
@@ -110,6 +111,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public boolean verifyAccount(String token) {
         Optional<VerificationToken> verificationToken = verificationTokenRepository.findByToken(token);
         if (verificationToken.isEmpty()) {
@@ -150,14 +152,12 @@ public class UserServiceImpl implements UserService {
             log.error("User not found in the DB");
             throw new UsernameNotFoundException("User not found in the DB");
         }else {
-            log.error("User found in the DB" + user.getFirstName());
+            log.info("User found in the DB" + user.getFirstName());
         }
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
         user.getRoles().forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getName())));
 
         return new org.springframework.security
-                .core.userdetails.User(user.getUsername(), user.getPassword(),
-                user.isEnabled(), true, true,
-                true, authorities);
+                .core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
     }
 }
