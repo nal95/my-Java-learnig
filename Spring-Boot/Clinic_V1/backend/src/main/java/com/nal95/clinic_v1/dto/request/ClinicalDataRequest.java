@@ -7,9 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PatientRequest {
-    private String firstName;
-    private String lastName;
-    private int age;
-    private String email;
+public class ClinicalDataRequest {
+    private String componentName;
+    private String componentValue;
+    private long patientId;
 }

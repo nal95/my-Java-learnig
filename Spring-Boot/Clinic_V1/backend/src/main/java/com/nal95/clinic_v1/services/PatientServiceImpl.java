@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -67,6 +68,8 @@ public class PatientServiceImpl implements PatientService {
         String token = UUID.randomUUID().toString();
         VerificationToken verificationToken = new VerificationToken();
         verificationToken.setToken(token);
+        Instant instant = Instant.now();
+        verificationToken.setExpiryDate(instant.plus(1, ChronoUnit.DAYS));
         verificationToken.setPatient(patient);
 
         verificationTokenRepository.save(verificationToken);

@@ -41,4 +41,11 @@ public class PatientController {
         }
         return new ResponseEntity<>(returnValue, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/verification/{token}")
+    public ResponseEntity<String> verification(@PathVariable String token){
+        patientService.verifyAccount(token);
+        return new ResponseEntity<>("Account Activated Successful !!",HttpStatus.OK);
+
+    }
 }

@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ClinicalDataRepository extends JpaRepository<ClinicalData, Long> {
-    List<ClinicalData> findByPatientAndAndComponentNameOrderByMeasuredDateTime(long patientId,String componentName);
+    List<ClinicalData> findByPatientIdAndComponentNameOrderByMeasuredDateTime(long patientId,String componentName);
 }
