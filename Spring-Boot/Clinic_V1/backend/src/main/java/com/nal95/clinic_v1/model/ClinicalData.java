@@ -10,8 +10,8 @@ import java.sql.Timestamp;
 @Entity
 @Getter
 @Setter
-@ToString
 @RequiredArgsConstructor
+@Table(name = "clinicaldata")
 public class ClinicalData {
 
     @Id
@@ -24,6 +24,5 @@ public class ClinicalData {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_id",nullable = false)
     @JsonIgnore
-    @ToString.Exclude
     private Patient patient;
 }
