@@ -1,13 +1,13 @@
 package com.nal95.clinic_v1.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.sql.Timestamp;
 
 @Entity
 @Getter
@@ -21,4 +21,13 @@ public class Patient {
     private String firstName;
     private String lastName;
     private int age;
+    @Column(nullable = false, unique = true)
+    private String username;
+    @Column(nullable = false, unique = true)
+    private String email;
+    private String password;
+    @CreationTimestamp
+    private Timestamp created;
+    @Column(nullable = false, columnDefinition = "boolean default false")
+    private boolean enabled;
 }
