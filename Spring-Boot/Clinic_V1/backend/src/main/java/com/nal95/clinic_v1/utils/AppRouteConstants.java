@@ -12,7 +12,7 @@ public class AppRouteConstants {
     public static final String PATIENTS = API + "/patients"; //GET & POST
     public static final String gDATA = API + "/data"; // POST
     public static final String pDATA = API + "/data/**"; //GET
-    public static final String VERIFICATION_LINK = "http://localhost:8080/clinicalServices" + PATIENT + "/verification/";
+    public static final String VERIFICATION_LINK = "http://localhost:8080/clinicalServices" + API + "/verification/";
 
 
 }
