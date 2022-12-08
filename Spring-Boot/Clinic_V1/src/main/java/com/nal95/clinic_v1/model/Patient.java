@@ -22,10 +22,7 @@ public class Patient {
     private String lastName;
     private int age;
     @Column(nullable = false, unique = true)
-    private String username;
-    @Column(nullable = false, unique = true)
     private String email;
-    private String password;
     @CreationTimestamp
     private Timestamp created;
     @Column(nullable = false, columnDefinition = "boolean default false")
