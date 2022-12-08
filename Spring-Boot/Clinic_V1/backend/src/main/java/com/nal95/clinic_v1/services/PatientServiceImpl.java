@@ -34,9 +34,10 @@ public class PatientServiceImpl implements PatientService {
             throw new RuntimeException("DB already have this Email");
 
         Patient patient = new Patient();
-        BeanUtils.copyProperties(patient,newPatient);
+        BeanUtils.copyProperties(newPatient,patient);
         patient.setCreated(Timestamp.from(Instant.now()));
         patient.setEnabled(false);
+        patientRepository.save(patient);
         String token = generateVerificationToken(patient);
         String subject = "Account Activation";
         String recipient = patient.getEmail();

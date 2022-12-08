@@ -4,15 +4,14 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
-@ToString
 @RequiredArgsConstructor
 public class Patient {
     @Id
@@ -27,4 +26,6 @@ public class Patient {
     private Timestamp created;
     @Column(nullable = false, columnDefinition = "boolean default false")
     private boolean enabled;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "patient")
+    private List<ClinicalData> clinicalData;
 }
