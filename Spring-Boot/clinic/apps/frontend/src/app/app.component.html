@@ -1,12 +1,13 @@
-
-<div class="content" role="main">
-  <!-- Highlight Card -->
-  <div class="card highlight-card card-small">
-
-    <span>{{ title }} app is running!</span>
-
-  </div>
-
-</div>
+<mat-toolbar color="primary">
+  <span class="menu-spacer"></span>
+  <a mat-button routerLink="/registration">
+    <mat-icon>how_to_reg</mat-icon>
+    New Patient
+  </a>
+  <a mat-button routerLink="/data-table">
+    <mat-icon>table_view</mat-icon>
+    Data Table
+  </a>
+</mat-toolbar>
 
 <router-outlet></router-outlet>

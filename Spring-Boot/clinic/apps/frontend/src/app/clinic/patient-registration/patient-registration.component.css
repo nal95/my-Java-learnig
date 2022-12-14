@@ -1,0 +1,35 @@
+.registration-card{
+  max-width: 500px;
+  left: 50%;
+  margin-top: 59px;
+  margin-left: -261px;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  margin-left: 14px;
+}
+
+.example-full-width {
+  width: 100%;
+  display: flex;
+
+  /*align-items: flex-start;*/
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: darkgray !important;
+}
+
+::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: darkgray !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: darkgray !important;
+}
