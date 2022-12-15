@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {ClinicalHttpService} from "../services/clinical-http.service";
+import {NewPatient} from "../model/data.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-patient-registration',
@@ -12,25 +15,39 @@ export class PatientRegistrationComponent implements OnInit {
     firstname: new FormControl(''),
     lastname: new FormControl(''),
     email: new FormControl('', [Validators.required, Validators.email]),
-    age: new FormControl('', [Validators.min(1),Validators.maxLength(2)])
+    age: new FormControl('', [Validators.min(1), Validators.maxLength(2)])
   });
 
-
-  constructor() {
+  constructor(private readonly httpService: ClinicalHttpService,
+              private readonly router: Router) {
   }
 
   ngOnInit(): void {
   }
 
   submit() {
-    console.log(this.form.value);
+    const patient = this.getPatientData();
+    this.httpService.registerNewPatient(patient).subscribe(
+      () => this.router.navigate(["/data-table"]).then(() => {
+        //Do Nothing})
+      })
+    )
   }
 
   getErrorMessage() {
     if (this.form.controls['email'].hasError('required')) {
       return 'You must enter a value';
     }
-
     return this.form.controls['email'].hasError('email') ? 'Not a valid email' : '';
+  }
+
+  getPatientData(): NewPatient {
+    const patient = {} as NewPatient;
+    patient.firstName = this.form.controls['firstname'].value;
+    patient.lastName = this.form.controls['lastname'].value;
+    patient.age = this.form.controls['age'].value;
+    patient.email = this.form.controls['email'].value;
+
+    return patient;
   }
 }

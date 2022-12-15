@@ -15,3 +15,14 @@ export interface ClinicalData {
   "componentValue": string,
   "measuredDateTime": string,
 }
+
+export interface NewPatient {
+  "firstName": string,
+  "lastName": string,
+  "age": number,
+  "email": string,
+}
+export interface NewPatientResponse {
+  "firstName": string,
+  "lastName": string,
+}
