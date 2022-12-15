@@ -1,6 +1,7 @@
 package com.nal95.clinic.api;
 
 import com.nal95.clinic.dto.request.PatientRequest;
+import com.nal95.clinic.dto.request.PatientResponse;
 import com.nal95.clinic.model.ClinicalData;
 import com.nal95.clinic.model.Patient;
 import com.nal95.clinic.repos.PatientRepository;
@@ -39,21 +40,14 @@ public class PatientController {
     }
 
     @PostMapping("/patients")
-    public ResponseEntity<String> savePatient(@RequestBody PatientRequest patient) {
-        boolean result = patientService.addPatient(patient);
-        String returnValue = "Account Activated Successful :) !!";
-
-        if (!result) {
-            returnValue = "Something append in the activation process :( !!";
-        }
-        return new ResponseEntity<>(returnValue, HttpStatus.OK);
+    public PatientResponse savePatient(@RequestBody PatientRequest patient) {
+        return patientService.addPatient(patient);
     }
 
     @GetMapping(value = "/verification/{token}")
     public ResponseEntity<String> verification(@PathVariable String token) {
         patientService.verifyAccount(token);
         return new ResponseEntity<>("Account Activated Successful !!", HttpStatus.OK);
-
     }
 
 

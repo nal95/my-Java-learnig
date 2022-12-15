@@ -2,6 +2,7 @@ package com.nal95.clinic.services;
 
 import com.nal95.clinic.dto.request.NotificationEmail;
 import com.nal95.clinic.dto.request.PatientRequest;
+import com.nal95.clinic.dto.request.PatientResponse;
 import com.nal95.clinic.model.Patient;
 import com.nal95.clinic.model.VerificationToken;
 import com.nal95.clinic.repos.PatientRepository;
@@ -28,12 +29,14 @@ public class PatientServiceImpl implements PatientService {
 
 
     @Override
-    public boolean addPatient(PatientRequest newPatient) {
+    public PatientResponse addPatient(PatientRequest newPatient) {
         if ((patientRepository.findUserByEmail(newPatient.getEmail())) != null)
             throw new RuntimeException("DB already have this Email");
 
         Patient patient = new Patient();
+        PatientResponse patientResponse = new PatientResponse();
         BeanUtils.copyProperties(newPatient, patient);
+        BeanUtils.copyProperties(newPatient, patientResponse);
         patient.setCreated(Timestamp.from(Instant.now()));
         patient.setEnabled(false);
         patientRepository.save(patient);
@@ -43,7 +46,7 @@ public class PatientServiceImpl implements PatientService {
         String body = "Welcome " + patient.getFirstName().toUpperCase() + ". " + patient.getLastName().toUpperCase() +
                 "\nTo activate your account please ";
         mailService.sendMail(new NotificationEmail(subject, recipient, body), token);
-        return true;
+        return patientResponse;
     }
 
     @Override
