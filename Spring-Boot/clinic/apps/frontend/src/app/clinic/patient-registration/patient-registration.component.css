@@ -1,35 +1,21 @@
-.registration-card{
-  max-width: 500px;
-  left: 50%;
-  margin-top: 59px;
-  margin-left: -261px;
+.registration-page {
+  max-width: 350px;
+  margin: 50px auto 0 auto;
+  background-color: #153650;;
+
 }
 
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-  margin-left: 14px;
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
 }
 
-.example-full-width {
+.registration-header {
+  margin-left: -17px
+}
+
+.registration-form-field {
   width: 100%;
   display: flex;
-
-  /*align-items: flex-start;*/
-}
-
-::ng-deep .mat-focused .mat-form-field-label {
-  /*change color of label*/
-  color: darkgray !important;
-}
-
-::ng-deep.mat-form-field-underline {
-  /*change color of underline*/
-  background-color: darkgray !important;
-}
-
-::ng-deep.mat-form-field-ripple {
-  /*change color of underline when focused*/
-  background-color: darkgray !important;
 }
