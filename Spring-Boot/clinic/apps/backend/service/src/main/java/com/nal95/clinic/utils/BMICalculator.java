@@ -2,6 +2,8 @@ package com.nal95.clinic.utils;
 
 import com.nal95.clinic.model.ClinicalData;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 
 public class BMICalculator {
@@ -19,6 +21,7 @@ public class BMICalculator {
                 ClinicalData bmiData = new ClinicalData();
                 bmiData.setComponentName("BMI");
                 bmiData.setComponentValue(Float.toString(bmi));
+                bmiData.setMeasuredDateTime(Timestamp.from(Instant.now()));
                 clinicalData.add(bmiData);
             }
         }

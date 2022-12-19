@@ -51,7 +51,7 @@ public class PatientController {
     }
 
 
-    @GetMapping(value = "/patients/analyze/{id}")
+    @GetMapping(value = "/patient/analyze/{id}")
     public Patient analyze(@PathVariable("id") long id) {
         Patient patient = patientRepository.findById(id).orElseThrow();
         List<ClinicalData> clinicalData = patient.getClinicalData();
