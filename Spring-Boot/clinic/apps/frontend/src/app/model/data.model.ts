@@ -22,7 +22,14 @@ export interface NewPatient {
   "age": number,
   "email": string,
 }
+
 export interface NewPatientResponse {
   "firstName": string,
   "lastName": string,
+}
+
+export interface NewPatientData {
+  "componentName": string,
+  "componentValue": string,
+  "patientId": string,
 }

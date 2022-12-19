@@ -1,0 +1,38 @@
+<mat-card class="patient-page" *ngIf="patient; else loading">
+  <mat-card-header >
+    <mat-card-title>
+        Name: {{patient.firstName}} {{patient.lastName}} <br>
+        Age: {{patient.age}}
+    </mat-card-title>
+  </mat-card-header>
+  <form class="patient-content" [formGroup]="form" (submit)="savePatientData()" >
+    <mat-form-field >
+      <mat-label>Category</mat-label>
+      <mat-select formControlName = "category">
+        <mat-option *ngFor="let positionOption of categoryOptions"
+                    [value]="positionOption"
+        >{{positionOption}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="registration-form-field">
+      <mat-label>value</mat-label>
+      <input matInput
+             type="text"
+             placeholder="value"
+             formControlName="value"
+      >
+    </mat-form-field>
+
+    <button mat-raised-button color="primary"
+            [disabled]="!form.valid"
+    >SAVE
+    </button>
+
+  </form>
+</mat-card>
+
+
+<ng-template #loading>
+  <!--  spinner  coming soon -->
+</ng-template>

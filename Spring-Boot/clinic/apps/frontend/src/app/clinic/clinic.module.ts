@@ -1,25 +1,18 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DataTableComponent } from './data-table/data-table.component';
-import { PatientRegistrationComponent } from './patient-registration/patient-registration.component';
+import {NgModule} from '@angular/core';
+import {DataTableComponent} from './data-table/data-table.component';
 import {MaterialModule} from "../material.module";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-
+import {CommonModule} from "@angular/common";
 
 
 @NgModule({
   declarations: [
     DataTableComponent,
-    PatientRegistrationComponent
   ],
-  exports: [
-    PatientRegistrationComponent
-  ],
+  exports: [],
   imports: [
     CommonModule,
     MaterialModule,
-    FormsModule,
-    ReactiveFormsModule,
   ]
 })
-export class ClinicModule { }
+export class ClinicModule {
+}

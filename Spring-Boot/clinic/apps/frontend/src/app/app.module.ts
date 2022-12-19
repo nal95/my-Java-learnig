@@ -7,6 +7,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {ClinicModule} from "./clinic/clinic.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from "./material.module";
+import {PatientModule} from "./patient/patient.module";
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {MaterialModule} from "./material.module";
     AppRoutingModule,
     HttpClientModule,
     ClinicModule,
+    PatientModule,
     BrowserAnimationsModule,
     MaterialModule,
   ],

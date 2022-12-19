@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {ClinicalHttpService} from "../services/clinical-http.service";
-import {NewPatient} from "../model/data.model";
+import {ClinicalHttpService} from "../../services/clinical-http.service";
+import {NewPatient} from "../../model/data.model";
 import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-patient-registration',
-  templateUrl: './patient-registration.component.html',
-  styleUrls: ['./patient-registration.component.css']
+  templateUrl: './registration.component.html',
+  styleUrls: ['./registration.component.css']
 })
-export class PatientRegistrationComponent implements OnInit {
+export class RegistrationComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
     firstname: new FormControl(''),
@@ -28,7 +28,7 @@ export class PatientRegistrationComponent implements OnInit {
   submit() {
     const patient = this.getPatientData();
     this.httpService.registerNewPatient(patient).subscribe(
-      () => this.router.navigate(["/data-table"]).then(() => {
+      () => this.router.navigate(['/data-table']).then(() => {
         //Do Nothing})
       })
     )
