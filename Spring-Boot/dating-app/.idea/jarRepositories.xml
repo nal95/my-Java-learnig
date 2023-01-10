@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteRepositoriesConfiguration">
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="project-artifact-registry" />
+      <option name="name" value="GEMA Google Project Artifact Registry" />
+      <option name="url" value="artifactregistry://europe-west3-maven.pkg.dev/online-portal-sandbox-47cb/online-portal--maven-repo" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="artifactory-third-party-libs" />
+      <option name="name" value="GEMA Third Party Libs" />
+      <option name="url" value="https://artifactory.it4ipm.de/artifactory/gema-maven-third-party-libs/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Maven Central repository" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central-artifact-registry" />
+      <option name="name" value="GEMA Google Project Artifact Registry" />
+      <option name="url" value="artifactregistry://europe-west3-maven.pkg.dev/artifactregistry-prod-0283/online-portal--maven-repo" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss.community" />
+      <option name="name" value="JBoss Community repository" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="all" />
+      <option name="name" value="GEMA" />
+      <option name="url" value="https://artifactory.it4ipm.de/artifactory/gema-maven-all/" />
+    </remote-repository>
+  </component>
+</project>
